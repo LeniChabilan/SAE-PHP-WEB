@@ -6,7 +6,7 @@ $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Utilisateur ( 
-    utilisateurId INTEGER PRIMARY KEY,
+    utilisateurId INTEGER PRIMARY KEY AUTOINCREMENT,
     nomUtilisateir VARCHAR(50),
     emailUtilisateur VARCHAR(50),
     MDPutilisateur VARCHAR(50),
@@ -15,11 +15,11 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Utilisateur (
     numTel TEXT)");
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Artiste ( 
-    artisteId INTEGER PRIMARY KEY,
+    artisteId INTEGER PRIMARY KEY AUTOINCREMENT,
     nomArtiste VARCHAR(50))");
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Album ( 
-    albumId INTEGER PRIMARY KEY,
+    albumId INTEGER PRIMARY KEY AUTOINCREMENT,
     nomAlbum VARCHAR(50),
     AnneeAlbum INTEGER,
     imageAlbum BLOB,
@@ -32,11 +32,11 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Album (
 
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Musique ( 
-    musiqueId INTEGER PRIMARY KEY,
+    musiqueId INTEGER PRIMARY KEY AUTOINCREMENT,
     nomMusique VARCHAR(50))");
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Genre ( 
-    genreId INTEGER PRIMARY KEY,
+    genreId INTEGER PRIMARY KEY AUTOINCREMENT,
     nomGenre VARCHAR(50))");
 
 
@@ -57,17 +57,6 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Noter (
     FOREIGN KEY(utilisateurId) REFERENCES Utilisateur(utilisateurId)
     )");
 
-
+echo "Table created successfully\n";
 ?>
 
-
-<!-- $file_db->exec("CREATE TABLE IF NOT EXISTS NouvelleTable ( 
-    nouvelleTableId INTEGER PRIMARY KEY,
-    utilisateurId INTEGER,
-    autreColonne TEXT,
-    FOREIGN KEY (utilisateurId) REFERENCES Utilisateur(utilisateurId)
-)"); -->
-
-
-
-<!-- $requete->bindParam(':contenu', $contenuImage, PDO::PARAM_LOB); -->
