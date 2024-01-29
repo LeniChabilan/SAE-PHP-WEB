@@ -1,32 +1,32 @@
-ul{
+.listeAl{
     display: flex;
     flex-wrap: wrap;
 }
 
-li{
-    flex-grow: 1;
+.listeAl li{
+    
     list-style: none;
 }
 
-form {display: flex;
+.searchBar {display: flex;
 }
 
-img{
-    height: 20vw;
-    width: 20vw;
+.listeAl li img{
+    height: 18vw;
+    width: 18vw;
     border-radius: 12px;
     box-shadow: -1px 3px 49px -1px rgba(28,0,105,0.69);
 -webkit-box-shadow: -1px 3px 49px -1px rgba(28,0,105,0.69);
 -moz-box-shadow: -1px 3px 49px -1px rgba(28,0,105,0.69);
-    margin: 50px;
+    margin: 30px;
 }
 
-img:hover {
+.listeAl li img:hover {
     webkit-filter: blur(2px); /* Chrome, Safari, Opera */
     filter: blur(2px);
 }
 
-input{
+.searchBar input{
     flex-grow: 2;
     box-shadow: 0px 3px 49px -1px rgba(28,0,105,0.69);
 -webkit-box-shadow: 0px 3px 49px -1px rgba(28,0,105,0.69);
@@ -35,7 +35,7 @@ input{
 border-radius: 5px;
 }
 
-button{
+.searchBar button{
     flex-grow: 1;
 }
 
