@@ -20,6 +20,12 @@ header {
   border-width: 0.2em 0.2em 0.15em 0.2em;
 }
 
+.centre{
+  display: flex;
+}
+main {
+  flex-grow: 1;
+}
 
 .img_base {
   height: 4vw;
@@ -122,6 +128,9 @@ header {
   justify-content: center;
   align-items: center;
 }
+aside{
+  height: 100%;
+}
 .d_aside{
     justify-content: center;
     align-items: center;
@@ -132,10 +141,9 @@ header {
     align-items: center;
     padding-top: 3rem;
     padding-bottom: 3rem;
-
+    height: 90%;
     margin: 1.5%;
     max-width: 96%;
-    border-radius: 2%;
   }
 
 aside{
