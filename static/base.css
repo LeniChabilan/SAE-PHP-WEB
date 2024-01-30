@@ -155,9 +155,7 @@ aside{
   padding-top: 2%;
   flex-basis: 100%;
 }
-.redirection>li>a{
-  color: red;
-}
+
 
 #bouton_se_connecter>a{
   color: white;
@@ -190,8 +188,6 @@ footer {
   flex-basis: 100%;
   background-color: #2a2b38;
   color: white;
-  border: black solid;
-  border-width: 0.15em 0.2em 0.15em 0.2em;
 
 }
 
@@ -201,31 +197,8 @@ footer {
   align-items: flex-start;
   max-width: 1200px;
   margin: auto;
-  padding: 0 20px;
 }
 
-.footer-section {
-  margin: 50px;
-  white-space: nowrap;
-  margin-bottom: 0.5vw;
-}
-
-.footer-section h3 {
-  margin-bottom: 10px;
-  color: #ffffff;
-}
-
-.footer-section p, .footer-section a {
-  color: #ffffff;
-  text-decoration: none;
-  line-height: 1.6;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-  color: #ffffff;
-
-}
 
 @media screen and (max-width: 768px) {
   .container-footer {
