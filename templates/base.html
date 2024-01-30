@@ -17,7 +17,7 @@
       </div>
         
       <div class="droite">
-        <button type="button" id="bouton_se_connecter">Se connecter</button>
+        <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
         </ul>
       </div> 
     </header>
@@ -25,10 +25,10 @@
     <aside >
         <div class="d_aside">
             <ul class="redirection">
-            <li><button type="button" id="bouton_se_connecter"><a href="">Accueil</a></button></li>
-            <li><button type="button" id="bouton_se_connecter"><a href="">Mes playlist</a></button>
+            <li><a href=""></a><button type="button" id="bouton_se_connecter">Accueil</button></a></li>
+            <li><a href=""></a><button type="button" id="bouton_se_connecter">Mes playlist</button></a>
             </li>
-            <li><button type="button" id="bouton_se_connecter"><a href="">Mes likes</a></button></li>
+            <li><a href=""></a><button type="button" id="bouton_se_connecter">Mes likes</button></a></li>
         </ul>
     </div>
         
@@ -79,32 +79,7 @@
   </main>
 </div>
     <footer>
-      <div class="container-footer">
-        <div class="footer-section">
-          <h3>À Propos</h3>
-          <p>Notre mission est de créer une expérience inoubliable pour nos visiteurs</p>
-        </div>
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <p>Téléphone: 01 23 45 67 89</p>
-          <p>Email: contact@musico.fr</p>
-          <p>Adresse: 123 Rue de la Musique, 75001 Paris, France</p>
-        </div>
-        <div class="footer-section">
-          <h3>Suivez-nous</h3>
-          <a href="https://facebook.com">
-            <img class="img_reseau" id="imgF" src="{{ url_for('static', filename='img/facebook.png') }}" alt="Facebook" />
-          </a>
-          <a href="https://twitter.com">
-            <img class="img_reseau" id="imgX" src="{{ url_for('static', filename='img/X.png') }}" alt="Twitter" />
-          </a>
-          <a href="https://Instagram.com">
-            <img class="img_reseau" id="imgX" src="{{ url_for('static', filename='img/Instagram.png') }}" alt="X" />
-          </a>
-        </div>
-      </div>
       <div class="fin"><p>© 2024 MUSIC'O. Tous droits réservés.</p></div>      
     </footer>
-    <script type="text/javascript" src="{{ url_for('static', filename='script/App.js') }}"></script>
   </body>
 </html>
