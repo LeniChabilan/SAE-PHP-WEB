@@ -25,6 +25,7 @@ header {
 }
 main {
   flex-grow: 1;
+  background-color: #101011;
 }
 
 .img_base {
@@ -53,7 +54,6 @@ main {
 #fond_bouton{
   text-decoration: none;
 }
-
 #bouton_se_connecter {
   display: flex;
   appearance: none;
@@ -81,6 +81,7 @@ main {
   align-items: center;
   margin: 0.7vw;
 }
+
 
 
 
@@ -128,9 +129,6 @@ main {
   justify-content: center;
   align-items: center;
 }
-aside{
-  height: 100%;
-}
 .d_aside{
     justify-content: center;
     align-items: center;
@@ -147,12 +145,14 @@ aside{
   }
 
 aside{
-  flex-basis: 15%;
+  height: 100%;
+  flex-basis: 20%;
   background-color: black;
 }
 
 .redirection{
-  
+  display: flex;
+  flex-wrap: wrap;
   padding-left: 0%;
   justify-content: center;
   align-items: center;
@@ -161,6 +161,7 @@ aside{
 }
 .redirection>li{
   padding-top: 2%;
+  margin: 1.5em 0.75em;
   flex-basis: 100%;
 }
 
@@ -213,4 +214,65 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+}
+
+
+.btn {
+  display: block;
+  flex-basis: 100%;
+  color: white;
+  background: transparent;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em; 
+  font-weight: 700;
+  letter-spacing: 0.0625em; 
+  text-transform: uppercase;
+  padding: 0.4375em 1.25em; 
+  margin: 0.4375em;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease 0s;
+  width: auto;
+
+}
+
+
+
+.btn:focus,
+.btn:hover{
+  color: #000000;
+  background: #ffffff;
+}
+.btn:before,
+.btn:after{
+  content: '';
+  height: 100%;
+  width: 80%;
+  border: 2px solid white;
+  border-right: none;
+  border-bottom: none;
+  position: absolute;
+  left: -0.4375em; /* -7px */
+  top: -0.4375em; /* -7px */
+  transition: all 0.2s ease-in, width 0.5s cubic-bezier(.45,-0.33,.43,1.46);
+}
+.btn:after{
+  transform: rotate(180deg);
+  top: auto;
+  left: auto;
+  right: -0.4375em; /* -7px */
+  bottom: -0.4375em; /* -7px */
+}
+.btn:hover:before,
+.btn:hover:after{
+  width: 30%;
+}
+@media only screen and (max-width: 767px){
+  .btn{ margin-bottom: 1.875em; /* 30px */ }
+}
+
+a{
+  text-decoration: none;
 }
