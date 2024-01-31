@@ -22,6 +22,12 @@ $stmtGenre = $file_db->prepare($insertGenre);
 $insertArtiste = "INSERT INTO Artiste (nomArtiste) VALUES (:nomArtiste)";
 $stmtArtiste = $file_db->prepare($insertArtiste);
 
+// Requête d'insertion pour Album
+$insertAlbum = "INSERT INTO Album (nomAlbum, AnneeAlbum, imageAlbum, nomProducteur, artisteId) 
+               VALUES (:nomAlbum, :AnneeAlbum, :imageAlbum, :nomProducteur, :artisteId)";
+$stmtAlbum = $file_db->prepare($insertAlbum);
+
+
 foreach ($data as $entry) {
     if (isset($entry['genre'])) {
         $genres = (array)$entry['genre'];
@@ -62,6 +68,53 @@ foreach ($data as $entry) {
             $stmtArtiste->bindParam(':nomArtiste', $nomArtiste);
             $stmtArtiste->execute();
         }
+    }
+
+    $nomAlbum = $entry['title'];
+    $AnneeAlbum = $entry['releaseYear'];
+    $imageAlbum = $entry['img'];
+    $nomProducteur = $entry['parent'];
+
+    // Récupérer l'ID de l'artiste
+    $nomArtiste = strtolower($entry['by']);
+    $getArtisteIdQuery = "SELECT artisteId FROM Artiste WHERE nomArtiste = :nomArtiste";
+    $stmtGetArtisteId = $file_db->prepare($getArtisteIdQuery);
+    $stmtGetArtisteId->bindParam(':nomArtiste', $nomArtiste);
+    $stmtGetArtisteId->execute();
+    $artisteId = $stmtGetArtisteId->fetchColumn();
+
+    // Récupérer les ID des genres
+    $genreIds = [];
+    if (isset($entry['genre'])) {
+        $genres = (array)$entry['genre'];
+        foreach ($genres as $nomGenre) {
+            $nomGenre = strtolower($nomGenre);
+
+            $getGenreIdQuery = "SELECT genreId FROM Genre WHERE nomGenre = :nomGenre";
+            $stmtGetGenreId = $file_db->prepare($getGenreIdQuery);
+            $stmtGetGenreId->bindParam(':nomGenre', $nomGenre);
+            $stmtGetGenreId->execute();
+            $genreId = $stmtGetGenreId->fetchColumn();
+
+            if ($genreId) {
+                $genreIds[] = $genreId;
+            }
+        }
+    }
+
+    // Insérer l'album dans la table Album
+    $stmtAlbum->bindParam(':nomAlbum', $nomAlbum);
+    $stmtAlbum->bindParam(':AnneeAlbum', $AnneeAlbum);
+    $stmtAlbum->bindParam(':imageAlbum', $imageAlbum);
+    $stmtAlbum->bindParam(':nomProducteur', $nomProducteur);
+    $stmtAlbum->bindParam(':artisteId', $artisteId);
+    $stmtAlbum->execute();
+
+    $albumId = $file_db->lastInsertId(); // Récupérer l'ID de l'album inséré
+
+    // Insérer les associations entre l'album et les genres dans la table AlbumGenre
+    foreach ($genreIds as $genreId) {
+        $file_db->exec("INSERT INTO GenreAlbum (albumId, genreId) VALUES ($albumId, $genreId)");
     }
 }
 
