@@ -33,7 +33,10 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Album (
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Musique ( 
     musiqueId INTEGER PRIMARY KEY AUTOINCREMENT,
-    nomMusique VARCHAR(50))");
+    nomMusique VARCHAR(50),
+    dure time,
+    albumId INTEGER,
+    FOREIGN KEY(albumId) REFERENCES Album(albumId))");
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Genre ( 
     genreId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -53,9 +56,15 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS GenreAlbum (
 $file_db->exec("CREATE TABLE IF NOT EXISTS Noter ( 
     albumId INTEGER,
     utilisateurId INTEGER,
+    note INTEGER,
     FOREIGN KEY(albumId) REFERENCES Album(albumId),
     FOREIGN KEY(utilisateurId) REFERENCES Utilisateur(utilisateurId)
     )");
+
+$file_db->exec("CREATE TABLE IF NOT EXISTS Playlist ( 
+    playlistId INTEGER PRIMARY KEY AUTOINCREMENT,
+    nomPlaylist TEXT)");
+
 
 echo "Table created successfully\n";
 ?>
