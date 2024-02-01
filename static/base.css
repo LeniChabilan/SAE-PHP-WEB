@@ -9,6 +9,11 @@ body{
   margin: 0;
 }
 
+main{
+  overflow: scroll;
+  max-height: 83vh;
+}
+
 header {
   display: flex;
   flex-basis: 100%;
