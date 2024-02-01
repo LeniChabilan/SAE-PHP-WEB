@@ -14,11 +14,9 @@ use Symfony\Component\Yaml\Yaml;
 $yamlFile = 'extrait.yml';
 $data = Yaml::parseFile($yamlFile);
 
-// Requête d'insertion pour Genre
 $insertGenre = "INSERT INTO Genre (nomGenre) VALUES (:nomGenre)";
 $stmtGenre = $file_db->prepare($insertGenre);
 
-// Requête d'insertion pour Artiste
 $insertArtiste = "INSERT INTO Artiste (nomArtiste) VALUES (:nomArtiste)";
 $stmtArtiste = $file_db->prepare($insertArtiste);
 
@@ -38,10 +36,8 @@ foreach ($data as $entry) {
             $stmtCheckGenre->bindParam(':nomGenre', $nomGenre);
             $stmtCheckGenre->execute();
 
-            // Utiliser fetch pour récupérer la première ligne
             $existingGenre = $stmtCheckGenre->fetch(PDO::FETCH_ASSOC);
 
-            // Si le genre n'existe pas, l'ajouter
             if (!$existingGenre) {
                 $stmtGenre->bindParam(':nomGenre', $nomGenre);
                 $stmtGenre->execute();
@@ -73,6 +69,17 @@ foreach ($data as $entry) {
     $imageAlbum = $entry['img'];
     $nomProducteur = $entry['parent'];
 
+    if (is_file("./images/" . $imageAlbum)) {
+        $imageData = file_get_contents("./images/" . $imageAlbum);
+    } else {
+        echo "Le chemin spécifié n'est pas un fichier.";
+        $imageData = file_get_contents("./images/default2.jpg");
+    }
+        // Convertir en base64
+        $base64Image = base64_encode($imageData);
+    
+    
+
     // Récupérer l'ID de l'artiste
     $nomArtiste = strtolower($entry['by']);
     $getArtisteIdQuery = "SELECT artisteId FROM Artiste WHERE nomArtiste = :nomArtiste";
@@ -103,7 +110,7 @@ foreach ($data as $entry) {
     // Insérer l'album dans la table Album
     $stmtAlbum->bindParam(':nomAlbum', $nomAlbum);
     $stmtAlbum->bindParam(':AnneeAlbum', $AnneeAlbum);
-    $stmtAlbum->bindParam(':imageAlbum', $imageAlbum);
+    $stmtAlbum->bindParam(':imageAlbum', $base64Image);
     $stmtAlbum->bindParam(':nomProducteur', $nomProducteur);
     $stmtAlbum->bindParam(':artisteId', $artisteId);
     $stmtAlbum->execute();
@@ -114,8 +121,8 @@ foreach ($data as $entry) {
     foreach ($genreIds as $genreId) {
         $file_db->exec("INSERT INTO genreAlbum (albumId, genreId) VALUES ($albumId, $genreId)");
     }
-}
 
+}
 echo "Genres et artistes ajoutés en base de données avec succès";
 
 $file_db = null;
