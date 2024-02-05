@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <link rel="stylesheet" href="static/base.css" />
-  <link rel="stylesheet" href="static/home.css" />
+  <link rel="stylesheet" href="../static/base.css" />
+  <link rel="stylesheet" href="../static/home.css" />
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>
@@ -11,9 +11,8 @@
     
     <header>
         <div class="gauche"><a href="">
-            <img class="img_base" id="img1" src="./Data/images/logomusico.png" alt="image du logo de l'application" />
+            <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
-          <h2 id="nom_Entreprise">MUSIC'O</h2>
       </div>
         
       <div class="droite">
@@ -25,13 +24,13 @@
     <aside>
         <div class="d_aside">
             <ul class="redirection">
-            <li><a href="#" class="btn btn-lg desactiver">
+            <li><a href="#" class="btn_a btn-lg desactiver">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn btn-lg">
+            <li><a href="#" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
-            <li><a href="#" class="btn btn-lg">
+            <li><a href="#" class="btn_a btn-lg">
                 <span>Mes likes</span>
             </a></li>
         </ul>
