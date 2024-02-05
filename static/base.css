@@ -11,7 +11,7 @@ body{
 
 main{
   overflow: scroll;
-  max-height: 83vh;
+  max-height: 100%;
 }
 
 header {
@@ -227,7 +227,7 @@ footer {
 .btn_a {
   display: block;
   flex-basis: 100%;
-  color: white;
+  color: rgb(255, 125, 3);
   background: transparent;
   font-family: 'Oswald', sans-serif;
   font-size: 1em; 
@@ -250,7 +250,7 @@ footer {
 .btn_a:focus,
 .btn_a:hover{
   color: #000000;
-  background: #ffffff;
+  background: #fc792e;
 }
 .btn_a:before,
 .btn_a:after{
@@ -286,7 +286,7 @@ a{
 
 .desactiver{
   cursor:default;
-  background-color: #ffffff;
+  background-color: #fc792e;
   color: #000000;
 }
 html, body{
