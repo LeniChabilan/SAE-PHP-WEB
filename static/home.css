@@ -39,5 +39,10 @@ border-radius: 5px;
     flex-grow: 1;
 }
 
-
-
+.nomAl {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 6px;
+    color: orange;
+}
