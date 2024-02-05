@@ -56,8 +56,9 @@
                 foreach ($result as $row) {
                     echo "<li>";
                     echo "<a href='#'>";
-                    echo "<img src='Data/images/".$row['imageAlbum']."'";
-                    echo "<p class='nomAl'>".$row['nomAlbum']."</p>";
+                    $base64Image = $row['imageAlbum'];
+                    echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
+                    echo "<p class='nomAl'>" . $row['nomAlbum'] . "</p>";
                     echo "</a>";
                     echo "</li>";
                 }
