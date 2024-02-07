@@ -246,6 +246,15 @@ footer {
 
 }
 
+.listeAl li{
+  max-height: 516.6px;
+  max-width: 405.6px;
+}
+
+.nomAl{
+  max-height: 1em;
+  overflow: scroll;
+}
 
 
 .btn_a:focus,
