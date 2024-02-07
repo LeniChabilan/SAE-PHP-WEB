@@ -31,9 +31,6 @@
             <li><a href="#" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
-            <li><a href="" class="btn_a btn-lg">
-                <span>Mes likes</span>
-            </a></li>
             <li><a href="./noter.php" class="btn_a btn-lg">
                 <span>Mes Notes</span>
             </a></li>

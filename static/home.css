@@ -44,7 +44,7 @@ border-radius: 5px;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 6px;
-    color: orange;
+    color: #fc792e;
 }
 
 
@@ -57,13 +57,13 @@ border-radius: 5px;
   
   .searchTerm {
     width: 100%;
-    border: 3px solid #cc9900;
+    border: 3px solid #fc792e;
     border-right: none;
     padding: 5px;
     height: 20px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: black;
   }
   
   .searchTerm:focus{
@@ -73,8 +73,8 @@ border-radius: 5px;
   .searchButton {
     width: 40px;
     height: 36px;
-    border: 1px solid #ccaa00;
-    background: #cc8b00;
+    border: 1px solid #fc792e;
+    background: #fc792e;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;

@@ -24,30 +24,34 @@
     <aside>
         <div class="d_aside">
             <ul class="redirection">
-            <li><a href="#" class="btn_a btn-lg desactiver">
+            <li><a href="./index.php" class="btn_a btn-lg ">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
+            <li><a href="./playlists.php" class="btn_a btn-lg desactiver">
                 <span>Mes playlist</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
-                <span>Mes likes</span>
+            <li><a href="./noter.php" class="btn_a btn-lg">
+                <span>Mes notes</span>
             </a></li>
         </ul>
     </div>
         
     </aside>
     <main>
-      <form  class="searchBar"  action="#">
-          <input type="text" placeholder="Nom de la playlists" >
-          <button type="submit" value="Filtrer">Filtrer</button>
-      </form>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="rechercher . . .">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
       <ul class="listeAl">
         <?php
             $file_db = new PDO('sqlite:Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $query = "SELECT * FROM Playlist";
+            $query = "SELECT * FROM Album";
             
             $result = $file_db->query($query);
             
