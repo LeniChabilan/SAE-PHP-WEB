@@ -354,6 +354,19 @@ foreach ($userIds as $userId) {
 }
 
 
+$file_db->exec("INSERT INTO Playlist (nomPlaylist, utiId) VALUES
+    ('Ma Playlist', 1),
+    ('Playlist de fête', 2)");
+
+$file_db->exec("INSERT INTO PlaylistAlbum (playlistId, albumId) VALUES
+    (1, 3),
+    (1, 7),
+    (1, 10),
+    (2, 5),
+    (2, 8),
+    (2, 12)");
+
+echo "PLAYLIST";
 $file_db = null;
 
 
