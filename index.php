@@ -16,7 +16,7 @@
       </div>
         
       <div class="droite">
-        <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
+        <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
         </ul>
       </div> 
     </header>
@@ -27,11 +27,11 @@
             <li><a href="#" class="btn_a btn-lg desactiver">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
+            <li><a href="./playlist.php" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
             
-            <li><a href="./noter.php" class="btn_a btn-lg">JTM_Romain
+            <li><a href="./noter.php" class="btn_a btn-lg">
                 <span>Mes Notes</span>
             </a></li>
         </ul>
