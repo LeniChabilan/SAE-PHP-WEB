@@ -39,10 +39,14 @@
         
     </aside>
     <main>
-      <form  class="searchBar"  action="#">
-          <input type="text" placeholder="Nom de la playlists" >
-          <button type="submit" value="Filtrer">Filtrer</button>
-      </form>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="rechercher . . .">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
       <ul class="listeAl">
         <?php
             $file_db = new PDO('sqlite:Data/bd.sqlite3');
