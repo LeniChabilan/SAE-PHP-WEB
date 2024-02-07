@@ -63,8 +63,17 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Noter (
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Playlist ( 
     playlistId INTEGER PRIMARY KEY AUTOINCREMENT,
-    nomPlaylist TEXT)");
+    nomPlaylist VARCHAR(50),
+    utiId INTEGER,
+    FOREIGN KEY(utiId) REFERENCES Utilisateur(utilisateurId)
+    )");
 
+$file_db->exec("CREATE TABLE IF NOT EXISTS PlaylistAlbum(
+    playlistId INTEGER,
+    albumId INTEGER,
+    FOREIGN KEY(playlistId) REFERENCES Playlist(playlistId),
+    FOREIGN KEY(albumId) REFERENCES Album(albumId)
+    )");
 
 echo "Table created successfully\n";
 ?>
