@@ -14,7 +14,7 @@
     
     <header>
         <div class="gauche"><a href="">
-            <img class="img_base" id="img1" src="../Data/images/logo.png" alt="image du logo de l'application" />
+            <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
           <h2 id="nom_Entreprise">MUSIC'O</h2>
       </div>

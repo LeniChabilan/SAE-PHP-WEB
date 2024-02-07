@@ -23,7 +23,7 @@
         <div class="main">
             <div class="card">
                 <h4 class="title">Créer votre compte</h4>
-                <form class="form-horizontal" role="form" method="POST" action="">
+                <form class="form-horizontal" role="form" method="POST" action="./connexion.php">
                     <div class="field">
                         <svg class="input-icon"><!--SVG ici --></svg>
                         <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50">
@@ -53,7 +53,7 @@
                     <div id="error-message" style="color: rgb(219, 36, 36);"></div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn_i btn-crcompte">Créer mon compte</button>
+                                <button type="submit"  class="btn_i btn-crcompte">Créer mon compte</button>
                         </div>
                     </div>
                 </form >
