@@ -29,7 +29,7 @@ header {
   display: flex;
 }
 main {
-  flex-basis: 70%;
+  flex-basis: 69%;
   flex-grow: 1;
   background-color: #101011;
 }
