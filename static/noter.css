@@ -1,0 +1,32 @@
+.note{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.numn{
+    flex-basis: 20%;
+    margin: 0.5%;
+}
+.btn-n{
+    flex-basis: 50%;
+    margin: 0.5%;
+    margin-left: 5%;
+}
+
+.rating {
+    direction: rtl;
+ }
+ .rating a {
+    color: rgb(255, 125, 3);
+    text-decoration: none;
+    font-size: 2.5em;
+    transition: color .4s;
+ }
+ .rating a:hover,
+ .rating a:focus,
+ .rating a:hover ~ a,
+ .rating a:focus ~ a {
+    color: rgb(255, 125, 3);
+    cursor: pointer;
+ }

@@ -30,38 +30,31 @@
             <li><a href="#" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
-            <li><a href="" class="btn_a btn-lg">
+            <li><a href="#" class="btn_a btn-lg">
                 <span>Mes likes</span>
-            </a></li>
-            <li><a href="./noter.php" class="btn_a btn-lg">
-                <span>Mes Notes</span>
             </a></li>
         </ul>
     </div>
         
     </aside>
     <main>
-      <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="rechercher . . .">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
+      <form  class="searchBar"  action="#">
+          <input type="text" placeholder="Nom de la playlists" >
+          <button type="submit" value="Filtrer">Filtrer</button>
+      </form>
       <ul class="listeAl">
         <?php
             $file_db = new PDO('sqlite:Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $query = "SELECT * FROM Album";
+            $query = "SELECT * FROM Playlist";
             
             $result = $file_db->query($query);
             
             if ($result) {
                 foreach ($result as $row) {
                     echo "<li>";
-                    echo "<a href='album.php?filter=".$row['albumId']."'>";
+                    echo "<a href='#'>";
                     $base64Image = $row['imageAlbum'];
                     echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
                     echo "<p class='nomAl'>" . $row['nomAlbum'] . "</p>";
