@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <link rel="stylesheet" href="../static/album.css" />
   <link rel="stylesheet" href="../static/base.css" />
+  <link rel="stylesheet" href="../static/artiste.css" />
 
   <head>
     <meta charset="utf-8" />
@@ -25,81 +25,76 @@
     <aside>
         <div class="d_aside">
             <ul class="redirection">
-            <li><a href="./index.php" class="btn_a btn-lg ">
+            <li><a href="./index.php" class="btn_a btn-lg">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
+            <li><a href="./playlists.php" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
+            
             <li><a href="./noter.php" class="btn_a btn-lg">
                 <span>Mes Notes</span>
             </a></li>
+            <li><a href="./artiste.php" class="btn_a btn-lg">
+                <span>Artiste</span>
+            </a></li>
         </ul>
     </div>
+        
     </aside>
     <main>
-    <?php
+        <?php
             $file_db = new PDO('sqlite:Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $query = "SELECT *FROM Album
-                    LEFT JOIN Artiste ON Album.artisteId = Artiste.artisteId
-                    WHERE Album.albumId = ".$_REQUEST['filter'];
-
-            $result = $file_db->query($query);
             
-            $genre="SELECT * from Album LEFT JOIN GenreAlbum ON Album.albumId= GenreAlbum.albumId
-            Natural Join Genre
-            WHERE Album.albumId = ".$_REQUEST['filter'];
+            $query = "SELECT * FROM Artiste WHERE artisteId = ".$_REQUEST['filter'];
+                       
+            $result = $file_db->query($query);
+
+            
+            $genre="SELECT * from Album WHERE Album.artisteId = ".$_REQUEST['filter'];
             $liste_genre=$file_db->query($genre);
 
+            $rows=$liste_genre->fetchAll();
 
-            echo"<h1>Album</h1>";
-            $quer="SELECT * FROM Musique WHERE albumId = ".$_REQUEST['filter'];
-            $res = $file_db->query($quer);
-            $rows = $res->fetchAll();
-            
-            $res = $file_db->query($quer);
+
             if ($result) {
                 foreach ($result as $row) {
                     echo "<div class='album'>";
-                    $base64Image = $row['imageAlbum'];
-                    echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
+                    echo "<img src='../Data/images/default.jpg' alt='Image Artiste'>";
                     echo "<div class='desc'>";
-                    echo "<h2>".$row['nomAlbum']."</h2>";
-                    echo "<p>".$row['AnneeAlbum']."</p>";
-                    echo "<p> Producteur :".$row['nomProducteur']."</p>";
-                    echo "<a href='./artiste.php?filter=".$row['artisteId']."'>Artiste :  ".$row['nomArtiste']."</a>";
-                    echo "<p> Nombre de musique : ".Count($rows)."</p>";
-                    echo "<p> Genre :";
-                    if($liste_genre){
-                    foreach($liste_genre as $g){
-                        echo ' ' .$g['nomGenre'];
-                    }
-                    }
-                    echo"</p>";
+                    echo "<h2>".$row['nomArtiste']."</h2>";
                     echo "</div>";
                     echo "</div>";
                 }
             }
-            if ($res) {  
-
+            if ($liste_genre) {  
+                
                 echo "<div class='musique'>";
-                echo "<h2> Liste des musiques </h2>";
                 echo "<table class='table'>";
                 echo "<thead>";
                 echo "<tr>";
                 echo "<th scope='col'>#</th>";
+                echo "<th scope='col'>Images</th>";
                 echo "<th scope='col'>Titre</th>";
-                echo "<th scope='col'>Durée</th>";
+                echo "<th scope='col'>Année</th>";
+                echo "<th scope='col'>Producteur</th>";
                 echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
                 for($i=0; $i<count($rows); $i++) {
+                    
                     echo "<tr>";
+                    echo "<a href='album.php?filter=".$rows[$i]['albumId']."'>";
                     echo "<th scope='row'>".$i."</th>";
-                    echo "<td>".$rows[$i]['nomMusique']."</td>";
-                    echo "<td>".$rows[$i]['dure']."</td>";
+                    $base64Image = $rows[$i]['imageAlbum'];
+                    echo "<td> <img class='albumimg' src='data:image;base64,".$base64Image."' alt='Image Album'></td>";    
+                    echo "<td>".$rows[$i]['nomAlbum']."</td>";
+                    echo "<td>".$rows[$i]['AnneeAlbum']."</td>";
+                    echo "<td>".$rows[$i]['nomProducteur']."</td>";
+                    echo "</a>";
                     echo "</tr>";
+                    
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -113,3 +108,5 @@
     <footer>
       <div class="fin"><p>© 2024 MUSIC'O. Tous droits réservés.</p></div>      
     </footer>
+    </body>
+</html>

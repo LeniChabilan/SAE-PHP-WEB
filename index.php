@@ -17,7 +17,7 @@
       </div>
         
       <div class="droite">
-        <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
+        <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
         </ul>
       </div> 
     </header>
@@ -29,13 +29,13 @@
                 <span>Accueil</span>
             </a></li>
             <li><a href="./playlists.php" class="btn_a btn-lg">
-
                 <span>Mes playlist</span>
             </a></li>
             
             <li><a href="./noter.php" class="btn_a btn-lg">
                 <span>Mes Notes</span>
             </a></li>
+            
         </ul>
     </div>
         
@@ -63,7 +63,7 @@
                     echo "<li>";
                     echo "<a href='album.php?filter=".$row['albumId']."'>";
                     $base64Image = $row['imageAlbum'];
-                    echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
+                    echo "<img class='album'src='data:image;base64," . $base64Image . "' alt='Image Album'>";
                     echo "<p class='nomAl'>" . $row['nomAlbum'] . "</p>";
                     echo "</a>";
                     echo "</li>";
