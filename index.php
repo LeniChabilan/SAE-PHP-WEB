@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedUser'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+
     <meta charset="utf-8" />
     <title>Music'o</title>
     <link rel="stylesheet" href="../static/base.css" />
@@ -38,17 +38,22 @@ if (!isset($_SESSION['loggedUser'])) {
     <aside>
         <div class="d_aside">
             <ul class="redirection">
-                <li><a href="#" class="btn_a btn-lg desactiver">
-                        <span>Accueil</span>
-                    </a></li>
-                <li><a href="./playlist.php" class="btn_a btn-lg">
-                        <span>Mes playlist</span>
-                    </a></li>
-                <li><a href="./noter.php" class="btn_a btn-lg">
-                        <span>Mes Notes</span>
-                    </a></li>
-            </ul>
-        </div>
+
+            <li><a href="#" class="btn_a btn-lg desactiver">
+                <span>Accueil</span>
+            </a></li>
+            <li><a href="./playlists.php" class="btn_a btn-lg">
+
+                <span>Mes playlist</span>
+            </a></li>
+            
+            <li><a href="./noter.php" class="btn_a btn-lg">
+                <span>Mes Notes</span>
+            </a></li>
+        </ul>
+    </div>
+        
+
     </aside>
 
     <main>
