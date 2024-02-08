@@ -49,14 +49,15 @@
            
             $result = $file_db->query($query);
 
-            $res="SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = 1";
-            $resa=$file_db->query($res);
+
             
             if ($result) {
                 foreach ($result as $row) {
                   echo "<li>";
                     echo "<h2 class='nomPlaylist'>". $row['nomPlaylist']."</h2>";
                     echo "<ul class='listeAl'>";
+                    $res="SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = 1 and playlistId = ".$row['playlistId']."";
+                    $resa=$file_db->query($res);
                     foreach ($resa as $rowa) {
                       echo "<li>";
                     echo "<a href='album.php?filter=".$rowa['albumId']."'>";

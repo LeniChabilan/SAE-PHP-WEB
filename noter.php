@@ -28,7 +28,7 @@
             <li><a href="./index.php" class="btn_a btn-lg ">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
+            <li><a href="./playlists.php" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
             <li><a href="#" class="btn_a btn-lg desactiver">
