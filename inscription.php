@@ -2,6 +2,8 @@
 <html lang="fr">
   <link rel="stylesheet" href="../static/base.css" />
   <link rel="stylesheet" href="../static/inscription.css">
+  <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
+
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>

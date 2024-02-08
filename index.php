@@ -19,6 +19,7 @@ if (!isset($_SESSION['loggedUser'])) {
     <title>Music'o</title>
     <link rel="stylesheet" href="../static/base.css" />
     <link rel="stylesheet" href="../static/home.css" />
+    <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
     <script src="https://kit.fontawesome.com/b2318dca58.js" crossorigin="anonymous"></script>
 </head>
 <body class="light">

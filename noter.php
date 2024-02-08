@@ -3,6 +3,8 @@
   <link rel="stylesheet" href="../static/base.css" />
   <link rel="stylesheet" href="../static/home.css" />
   <link rel="stylesheet" href="../static/noter.css" />
+  <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
+
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>
@@ -28,7 +30,7 @@
             <li><a href="./index.php" class="btn_a btn-lg ">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="#" class="btn_a btn-lg">
+            <li><a href="./playlists.php" class="btn_a btn-lg">
                 <span>Mes playlist</span>
             </a></li>
             <li><a href="#" class="btn_a btn-lg desactiver">
