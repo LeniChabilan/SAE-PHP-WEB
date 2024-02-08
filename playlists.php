@@ -3,6 +3,8 @@
   <link rel="stylesheet" href="../static/base.css" />
   <link rel="stylesheet" href="../static/home.css" />
   <link rel="stylesheet" href="../static/playlist.css" />
+  <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
+
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>

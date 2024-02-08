@@ -60,20 +60,39 @@ a > i {
 main{
     background-color: white;
 }
-.bienvenue{
-    font-size: 4vh;
-    font-weight: 300;
+
+.partie_principale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+
+}
+
+
+/* Modifiez la classe de votre tableau pour limiter la hauteur maximale */
+.table-scrollable {
+    max-height: 80vh; /* Ajustez cette valeur selon vos besoins */
+    overflow-y: auto; /* Ajout de l'overflow:auto pour permettre le défilement vertical si nécessaire */
+  }
+  
+  /* Réglez le style de débordement pour les cellules de tableau si nécessaire */
+  .table-scrollable td,
+  .table-scrollable th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bienvenue{
+    font-size: 6vh;
+    font-weight: 400;
     color: rgb(0, 0, 0);
     margin-top: 2vh;
     margin-bottom: 2vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.partie_principale{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; 
+    margin-top: 25%;
+    font-style: italic;
 }
