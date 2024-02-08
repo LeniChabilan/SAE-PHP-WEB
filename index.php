@@ -2,6 +2,7 @@
 <html lang="fr">
   <link rel="stylesheet" href="../static/base.css" />
   <link rel="stylesheet" href="../static/home.css" />
+
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>
@@ -27,7 +28,8 @@
             <li><a href="#" class="btn_a btn-lg desactiver">
                 <span>Accueil</span>
             </a></li>
-            <li><a href="./playlist.php" class="btn_a btn-lg">
+            <li><a href="./playlists.php" class="btn_a btn-lg">
+
                 <span>Mes playlist</span>
             </a></li>
             
