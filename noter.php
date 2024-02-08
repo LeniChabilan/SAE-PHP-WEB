@@ -17,7 +17,7 @@
       </div>
         
       <div class="droite">
-        <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
+        <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
         </ul>
       </div> 
     </header>
@@ -32,7 +32,7 @@
                 <span>Mes playlist</span>
             </a></li>
             <li><a href="#" class="btn_a btn-lg desactiver">
-                <span>Mes Noter</span>
+                <span>Mes Notes</span>
             </a></li>
         </ul>
     </div>
@@ -67,7 +67,6 @@
                   echo "</a>";
                   echo "<div class='note'>";
                   echo "<form action='update_note.php' method='post'>";
-                  echo "<input type='hidden' name='album_id' value='" . $row['idAlbum'] . "'>";
                   echo "<div class='rating'>";
                   for ($i = 5; $i >= 1; $i--) {
                     echo "<a href='#' title='Donner " . $i . " étoiles'>" . ($i <= $row['note'] ? "★" : "☆") . "</a>";

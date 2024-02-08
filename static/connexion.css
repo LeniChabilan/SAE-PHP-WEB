@@ -17,7 +17,7 @@ body {
 
 
 body.light .main {
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 body.dark .main {
@@ -78,7 +78,7 @@ body.dark .main {
   margin-top: 0.5vw ;
   font-size: 2vw;
   font-weight: 500;
-  color: #ffffff;
+  color: #fc792e;
 }
 
 /*Buttons*/
@@ -92,10 +92,18 @@ body.dark .main {
   font-size: 1vw;
   text-transform: uppercase;
   padding: 0;
-  background-color: #ffffff;
-  color: #5e6681;
+  background-color: #fc792e;
+  color: #000000;
   box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
   transition: all 0.3s ease-in-out;
+}
+
+.btn_c:hover {
+  background-color: #fc792e;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+  transform: translateY(-2px);
+
 }
 
 .btn-crcompte {
@@ -108,8 +116,8 @@ body.dark .main {
   font-size: 1vw;
   text-transform: uppercase;
   padding: 0;
-  background-color: #ffffff;
-  color: #5e6681;
+  background-color: #fc792e;
+  color: #000000;
   box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
   transition: all 0.3s ease-in-out;
 }

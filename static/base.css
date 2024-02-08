@@ -63,11 +63,11 @@ main {
 #bouton_se_connecter {
   display: flex;
   appearance: none;
-  background-color: transparent;
+  background-color: #fc792e;
   border: 0.125em solid #ffffff;
   border-radius: 0.9375em;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
   font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -96,10 +96,12 @@ main {
 }
 
 #bouton_se_connecter:hover {
-  color: #2a2b38;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #fc792e;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+  border: 0.125em solid #000000;
+  border-radius: 0.9375em;
+  transform: translateY(-2Spx);
 }
 
 #bouton_se_connecter:active {
