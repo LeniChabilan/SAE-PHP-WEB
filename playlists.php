@@ -2,6 +2,7 @@
 <html lang="fr">
   <link rel="stylesheet" href="../static/base.css" />
   <link rel="stylesheet" href="../static/home.css" />
+  <link rel="stylesheet" href="../static/playlist.css" />
   <head>
     <meta charset="utf-8" />
     <title>Music'o</title>
@@ -38,33 +39,36 @@
         
     </aside>
     <main>
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="rechercher . . .">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-      <ul class="listeAl">
+      <ul>
         <?php
             $file_db = new PDO('sqlite:Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $query = "SELECT * FROM Album";
+            $query = "SELECT * FROM Playlist WHERE utiId = 1";
             
+           
             $result = $file_db->query($query);
+
+            $res="SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = 1";
+            $resa=$file_db->query($res);
             
             if ($result) {
                 foreach ($result as $row) {
-                    echo "<li>";
-                    echo "<a href='#'>";
-                    $base64Image = $row['imageAlbum'];
+                  echo "<li>";
+                    echo "<h2 class='nomPlaylist'>". $row['nomPlaylist']."</h2>";
+                    echo "<ul class='listeAl'>";
+                    foreach ($resa as $rowa) {
+                      echo "<li>";
+                    echo "<a href='album.php?filter=".$rowa['albumId']."'>";
+                    $base64Image = $rowa['imageAlbum'];
                     echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
-                    echo "<p class='nomAl'>" . $row['nomAlbum'] . "</p>";
+                    echo "<p class='nomAl'>" . $rowa['nomAlbum'] . "</p>";
                     echo "</a>";
                     echo "</li>";
+                    }
+                    echo "</ul>";
                 }
+                
             } else {
                 echo "Erreur lors de l'exécution de la requête.";
             }
