@@ -19,7 +19,6 @@
         
       <div class="droite">
         <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
-        </ul>
       </div> 
     </header>
         <div class="main">

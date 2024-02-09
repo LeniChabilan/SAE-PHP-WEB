@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./static/base.css" />
   <link rel="stylesheet" href="./static/admin.css" />
+  <link rel="stylesheet" href="./static/formulaire.css" />
+
   <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
 
   
@@ -62,7 +64,7 @@ if(isset($_REQUEST['filter'])) {
             <div class="middle">
                 <h1 id="modification">Liste des Artistes</h1>
             </div>
-            <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Ajouter Artistes</button></a>
+            <a href="?filter=addArtiste"><button type="button" id="bouton_se_connecter">Ajouter Artistes</button></a>
             <table class="table table-striped table-scrollable">
                 <thead>
                     <tr>
@@ -139,7 +141,7 @@ if(isset($_REQUEST['filter'])) {
             <div class="middle">
                 <h1 id="modification">Liste des Albums</h1>
             </div>
-            <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Ajouter album</button></a>
+            <a href="?filter=addAlbum"><button type="button" id="bouton_se_connecter">Ajouter album</button></a>
             <table class="table table-striped table-scrollable">
                 <thead>
                     <tr>
@@ -181,7 +183,7 @@ if(isset($_REQUEST['filter'])) {
             <div class="middle">
                 <h1 id="modification">Liste des Musique</h1>
             </div>
-            <a href="./connexion.html"><button type="button" id="bouton_se_connecter">Ajouter musique</button></a>
+            <a href="?filter=addMusique"><button type="button" id="bouton_se_connecter">Ajouter musique</button></a>
             <table class="table table-striped table-scrollable">
                 <thead>
                     <tr>
@@ -210,6 +212,94 @@ if(isset($_REQUEST['filter'])) {
                 ?>
                 </tbody>
             </table>
+            <?php
+            break;
+        case 'addAlbum':
+            ?>
+            <div class="form">
+            <div class="title">Ajouter les informations d'un Album !</div>
+            <form role="form" method="POST" action="lien_vers_creation_groupe_gr" enctype="multipart/form-data">
+            <div class="input-container">
+                <input placeholder="Nom de l'album" type="text" class="input" name="nom" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="nom">Nom de l'album</label>
+            </div>
+            <div class="input-container">
+                <input placeholder="Année" type="text" class="input" name="annee" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="Année">Année</label>
+            </div>
+            <div class="input-container">
+                <label class="image" for="imgs">Insérer votre Image</label>
+                <input class="image" type="file" id="imgs" name="imgs" accept="image/png, image/jpeg">
+            </div>
+            <div class="input-container">
+                <input placeholder="Producteur" type="text" class="input" name="producteur" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="producteur">Producteur</label>
+            </div>
+            <div class="input-container">
+                <select name="style" id="pet-select" class="input">
+                <option value="style1">Rock</option>
+                <option value="style2">Arabe</option>
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="style">Style</label>
+            </div>
+            <div class="input-container">
+                <select name="artiste" id="pet-select" class="input">
+                <option value="artiste1">Pierre</option>
+                <option value="artiste2">Paul</option>
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="artiste">Artiste</label>
+            </div>
+            <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+            </form>
+            </div>
+            <?php
+            break;
+        case 'addMusique':
+            ?>
+            <div class="form">
+            <div class="title">Ajouter une Musique !</div>
+            <form role="form" method="POST" action="#" >
+              <div class="input-container">
+                <input placeholder="Nom de la Musique" type="text" class="input" name="nom" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="nom">Nom de la Musique</label>
+              </div>
+              <div class="input-container">
+                <input placeholder="" type="time" class="input" name="dure" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="dure">Durée</label>
+              </div>
+              <div class="input-container">
+                <select name="album" id="pet-select" class="input">
+                  <option value="album1">Album X</option>
+                  <option value="album2">Album Y</option>
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="album">Album</label>
+              </div>
+              <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+            </form>
+          </div>
+            <?php
+            break;
+        case 'addArtiste':
+            ?>
+            <div class="form">
+                <div class="title">Ajouter un Artiste !</div>
+                <form role="form" method="POST" action="#" >
+                <div class="input-container">
+                    <input placeholder="Nom de l'artiste" type="text" class="input" name="nom" value="" required>
+                    <div class="cut"></div>
+                    <label class="iLabel" for="nom">Nom de l'artiste</label>
+                </div>
+                <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+                </form>
+            </div>
             <?php
             break;
         default:
