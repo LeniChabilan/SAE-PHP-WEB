@@ -12,6 +12,8 @@ body{
 main{
   overflow: scroll;
   max-height: 88vh;
+  width: 80vw;
+  min-height: 88vh;
 }
 
 header {
