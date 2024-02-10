@@ -12,19 +12,16 @@
   <body class="light">
     
     <header>
-        <div class="gauche"><a href="./index.php">
+        <div class="gauche"><a href="../index.php">
             <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
       </div>
         
-      <div class="droite">
-      <a href="./deconnexion.php"><button type="button" id="bouton_se_connecter">Déconnexion</button></a>
-      </div> 
     </header>
         <div class="main">
             <div class="card">
                 <h4 class="title">Créer votre compte</h4>
-                <form class="form-horizontal" role="form" method="POST" action="./connexion.php">
+                <form class="form-horizontal" role="form" method="POST" action="../Factory/addUtilisateur.php">
                     <div class="field">
                         <svg class="input-icon"><!--SVG ici --></svg>
                         <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50">
@@ -61,6 +58,14 @@
             </div>
         </div>
         <script>
+                // Récupérer le message d'erreur à partir du paramètre GET
+                const params = new URLSearchParams(window.location.search);
+                const error = params.get('error');
+
+                // Si un message d'erreur est présent, afficher la popup
+                if (error) {
+                    alert(error);
+                }
             document.querySelector('.form-horizontal').addEventListener('submit', function(e) {
                 var mdp = document.getElementById('mdp').value;
                 var confirmMdp = document.getElementById('confirm_mdp').value;
