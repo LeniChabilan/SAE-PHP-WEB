@@ -25,7 +25,7 @@ session_start(); // Démarrez la session si ce n'est pas déjà fait
 // Vérifiez si l'utilisateur est déjà connecté
 if (isset($_SESSION['loggedUser'])) {
     // Rediriger vers la page d'accueil si l'utilisateur est déjà connecté
-    header("Location: index.php"); // Redirection vers index.php
+    header("Location: ../index.php"); // Redirection vers index.php
     exit; // Assurez-vous de terminer l'exécution du script après la redirection
 }
 
@@ -34,14 +34,13 @@ if (isset($_SESSION['loggedUser'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postData = $_POST;
 
-    $file_db = new PDO('sqlite:Data/bd.sqlite3');
+    $file_db = new PDO('sqlite:../Data/bd.sqlite3');
     $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     $query = "SELECT * FROM Utilisateur";
 
     $users = $file_db->query($query);
 
-    // Validation du formulaire
     if (isset($postData['email']) && isset($postData['password'])) {
         if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
             $errorMessage = 'Il faut un email valide pour soumettre le formulaire.';
@@ -56,12 +55,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         'name' => $user['nomUtilisateur'],
                     ];
 
-                    // Enregistrez l'utilisateur connecté dans la session
                     $_SESSION['loggedUser'] = $loggedUser;
-
-                    // Rediriger l'utilisateur vers la page d'accueil après connexion réussie
-                    header("Location: index.php"); // Redirection vers index.php
-                    exit; // Assurez-vous de terminer l'exécution du script après la redirection
+                    if ($user['roleUtilisateur'] === 'admin') {
+                        header("Location: admin.php"); 
+                        exit; 
+                    }
+                    else {
+                        header("Location: ../index.php");
+                        exit;
+                    }
                 }
             }
 

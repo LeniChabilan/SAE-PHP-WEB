@@ -1,7 +1,5 @@
 <?php
 
-$file_db = new PDO('sqlite:bd.sqlite3');
-$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Utilisateur ( 
@@ -12,5 +10,4 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Utilisateur (
     roleUtilisateur VARCHAR(50),
     DdN DATE,
     numTel TEXT)");
-
 ?>

@@ -1,7 +1,5 @@
 <?php
 
-$file_db = new PDO('sqlite:bd.sqlite3');
-$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 
 $file_db->exec("CREATE TABLE IF NOT EXISTS Album ( 
@@ -11,7 +9,9 @@ $file_db->exec("CREATE TABLE IF NOT EXISTS Album (
     imageAlbum BLOB,
     nomProducteur VARCHAR(50),
     artisteId INTEGER,
-    FOREIGN KEY(artisteId) REFERENCES Artiste(artisteId)   
+    FOREIGN KEY(artisteId) REFERENCES Artiste(artisteId)
+
+    
     )");
 
 ?>
