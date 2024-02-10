@@ -2,6 +2,7 @@
 <html lang="fr">
   <link rel="stylesheet" href="../static/album.css" />
   <link rel="stylesheet" href="../static/base.css" />
+  <link rel="stylesheet" href="../static/home.css" />
   <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
 
 
@@ -32,7 +33,7 @@
     <aside>
         <div class="d_aside">
             <ul class="redirection">
-            <li><a href="./index.php" class="btn_a btn-lg ">
+            <li><a href="../index.php" class="btn_a btn-lg ">
                 <span>Accueil</span>
             </a></li>
             <li><a href="./playlists.php" class="btn_a btn-lg">
@@ -46,7 +47,7 @@
     </aside>
     <main>
     <?php
-            $file_db = new PDO('sqlite:Data/bd.sqlite3');
+            $file_db = new PDO('sqlite:../Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             $query = "SELECT *FROM Album
                     LEFT JOIN Artiste ON Album.artisteId = Artiste.artisteId
