@@ -66,14 +66,62 @@ if (!isset($_SESSION['loggedUser'])) {
     </aside>
 
     <main>
-        <div class="wrap">
+        <form id="searchForm" class="wrap">
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="rechercher . . .">
+                <input type="text" class="searchTerm" placeholder="Rechercher...">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-        </div>
+        </form>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var form = document.getElementById("searchForm");
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault(); // Empêche la soumission du formulaire par défaut
+
+                    var searchTerm = document.querySelector(".searchTerm").value;
+
+                    // Envoie de la valeur de recherche au serveur via AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "./templates/recherche.php?searchTerm=" + searchTerm, true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            updateAlbumList(response);
+                        }
+                    };
+                    xhr.send();
+                });
+
+                function updateAlbumList(albums) {
+                    var ul = document.querySelector(".listeAl");
+                    ul.innerHTML = ""; // Efface la liste actuelle des albums
+
+                    albums.forEach(function(album) {
+                        var li = document.createElement("li");
+                        var a = document.createElement("a");
+                        a.href = "./templates/album.php?filter=" + album.albumId;
+
+                        var img = document.createElement("img");
+                        img.src = "data:image;base64," + album.imageAlbum;
+                        img.alt = "Image Album";
+
+                        var p = document.createElement("p");
+                        p.className = "nomAl";
+                        p.textContent = album.nomAlbum;
+
+                        a.appendChild(img);
+                        a.appendChild(p);
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    });
+                }
+            });
+        </script>
+
+
         <ul class="listeAl">
             <?php
             // Votre code PHP pour afficher les albums depuis la base de données
