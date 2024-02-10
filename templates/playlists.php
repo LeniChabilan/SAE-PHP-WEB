@@ -13,7 +13,7 @@
   <body class="light">
     
     <header>
-        <div class="gauche"><a href="">
+        <div class="gauche"><a href="../index.php">
             <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
       </div>
@@ -56,12 +56,27 @@
 
       <ul>
         <?php
+            session_start();
+
+            // Vérifie si l'utilisateur est connecté
+            if (isset($_SESSION['loggedUser'])) {
+                $userEmail = $_SESSION['loggedUser']['email'];
+                // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+            } else {
+                // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+                header("Location: connexion.php");
+                exit;
+            }
             $file_db = new PDO('sqlite:../Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
-            $query = "SELECT * FROM Playlist WHERE utiId = 1";
-            
-           
+
+            $quryId = "SELECT utilisateurId FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
+            $utiliID = $file_db->query($quryId);
+            $utiId = $utiliID->fetch();
+
+            $query = "SELECT * FROM Playlist WHERE utiId = " . $utiId['utilisateurId'];
+
             $result = $file_db->query($query);
 
 
@@ -71,7 +86,7 @@
                   echo "<li>";
                     echo "<h2 class='nomPlaylist'>". $row['nomPlaylist']."</h2>";
                     echo "<ul class='listeAl'>";
-                    $res="SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = 1 and playlistId = ".$row['playlistId']."";
+                    $res = "SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = " . $utiId['utilisateurId'] . " and playlistId = " . $row['playlistId'];
                     $resa=$file_db->query($res);
                     foreach ($resa as $rowa) {
                       echo "<li>";

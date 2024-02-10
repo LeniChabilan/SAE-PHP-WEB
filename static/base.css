@@ -256,8 +256,10 @@ footer {
 }
 
 .nomAl{
-  max-height: 1em;
-  overflow: scroll;
+  max-width: 200px; /* Définir la largeur maximale en pixels */
+  overflow: hidden; /* Masquer le texte qui dépasse */
+  white-space: nowrap; /* Empêcher le texte de se rompre */
+  text-overflow: ellipsis; /* Remplacer le texte qui dépasse par des points de suspension */
 }
 
 

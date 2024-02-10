@@ -14,7 +14,7 @@
   <body class="light">
     
     <header>
-        <div class="gauche"><a href="">
+        <div class="gauche"><a href="../index.php">
             <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
       </div>
@@ -47,8 +47,25 @@
     </aside>
     <main>
     <?php
+                session_start();
+
+                // Vérifie si l'utilisateur est connecté
+                if (isset($_SESSION['loggedUser'])) {
+                    $userEmail = $_SESSION['loggedUser']['email'];
+                    // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+                } else {
+                    // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+                    header("Location: connexion.php");
+                    exit;
+                }    
+
             $file_db = new PDO('sqlite:../Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $quryId = "SELECT utilisateurId FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
+            $utiliID = $file_db->query($quryId);
+            $utiId = $utiliID->fetch(); // permet de récupérer l'id de l'utilisateur connecté
+
             $query = "SELECT *FROM Album
                     LEFT JOIN Artiste ON Album.artisteId = Artiste.artisteId
                     WHERE Album.albumId = ".$_REQUEST['filter'];

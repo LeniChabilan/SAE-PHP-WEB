@@ -1,9 +1,30 @@
+<?php
+
+session_start();
+// Vérifie si l'utilisateur est connecté
+if (isset($_SESSION['loggedUser'])) {
+    $userEmail = $_SESSION['loggedUser']['email'];
+    // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+} else {
+    // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+    header("Location: connexion.php");
+    exit;
+}
+
+$file_db = new PDO('sqlite:../Data/bd.sqlite3');
+$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+$quryId = "SELECT * FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
+$res = $file_db->query($quryId);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fictional Profile</title>
+    <title>Music'o</title>
     <link rel="stylesheet" href="../static/base.css">
     <link rel="stylesheet" href="../static/home.css">
     <link rel="stylesheet" href="../static/profil.css">
@@ -46,12 +67,16 @@
         <div id="card">
             <img src="../Data/images/imageartiste.jpg"/>
             <div class="info">
-                <h2>Léni Chabilan</h2>
-                <p>email : leni.chabilan@hotmail.fr</p>
-                <p>Mdp : mdp123</p>
-                <p>Role : Utilisateur</p>
-                <p> tel: 0768438407</p>
-                <p>DdN : 13/07/2004</p> 
+                <?php
+                foreach ($res as $row) {
+                    echo "<h2>".$row['nomUtilisateir']."</h2>";
+                    echo "<p> email : ".$row['emailUtilisateur']."</p>";
+                    echo "<p> Mdp : ".$row['MDPutilisateur']."</p>";
+                    echo "<p> Role : ".$row['roleUtilisateur']."</p>";
+                    echo "<p> Tel : ".$row['numTel']."</p>";
+                    echo "<p> DdN : ".$row['DdN']."</p>";
+                }
+                ?>
             </div>
             <div class="bouton">
                 <ul class="liste_bouton">
@@ -61,7 +86,7 @@
                         </a>
                     </li>
                     <li class="logout">
-                        <a href="path/to/logout" id="fond_boutone" class="noligne">
+                        <a href="./deconnexion.php" id="fond_boutone" class="noligne">
                             <button type="button" class="button type1">Se déconnecter</button>
                         </a>
                     </li>

@@ -12,8 +12,7 @@ if (is_numeric($searchTerm)) {
     $stmt->bindParam(':searchYear', $searchTerm, PDO::PARAM_INT);
 } else {
     // Si le terme de recherche n'est pas numérique, recherchez par nom d'album ou nom d'artiste
-    $query = "SELECT * FROM Album NATURAL JOIN Artiste WHERE nomAlbum LIKE :searchTerm OR AnneeAlbum LIKE :search OR nomArtiste LIKE :searchTerm";
-    $stmt = $file_db->prepare($query);
+    $query = "SELECT * FROM Album NATURAL JOIN Artiste NATURAL JOIN GenreAlbum Natural Join Genre WHERE nomAlbum LIKE :searchTerm OR AnneeAlbum LIKE :searchTerm OR nomArtiste LIKE :searchTerm OR nomGenre LIKE :searchTerm";    $stmt = $file_db->prepare($query);
     $searchTerm = "%$searchTerm%";
     $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
 }
