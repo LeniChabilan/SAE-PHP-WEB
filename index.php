@@ -31,7 +31,7 @@ if (!isset($_SESSION['loggedUser'])) {
     </div>
 
     <div class="droite">
-        <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Déconnexion</button></a>
+        <a href="./deconnexion.php"><button type="button" id="bouton_se_connecter">Déconnexion</button></a>
         <a href="./playlists.php"></a>
             <button class="BtnProf">
                 <span class="svgContainerProf">

@@ -18,7 +18,7 @@
       </div>
         
       <div class="droite">
-        <a href="./connexion.php"><button type="button" id="bouton_se_connecter">Se connecter</button></a>
+      <a href="./deconnexion.php"><button type="button" id="bouton_se_connecter">Déconnexion</button></a>
       </div> 
     </header>
         <div class="main">
