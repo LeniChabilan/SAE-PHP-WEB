@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <link rel="stylesheet" href="../static/base.css" />
@@ -13,7 +16,7 @@
   <body class="light">
     
     <header>
-        <div class="gauche"><a href="">
+        <div class="gauche"><a href="../index.php">
             <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
       </div>
@@ -104,10 +107,25 @@
         </script>
       <ul class="listeAl">
         <?php
+
+            // Vérifie si l'utilisateur est connecté
+            if (isset($_SESSION['loggedUser'])) {
+                $userEmail = $_SESSION['loggedUser']['email'];
+                // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+            } else {
+                // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+                header("Location: connexion.php");
+                exit;
+            }
+
             $file_db = new PDO('sqlite:../Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $quryId = "SELECT utilisateurId FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
+            $utiliID = $file_db->query($quryId);
+            $utiId = $utiliID->fetch();
             
-            $query = "SELECT * FROM Album Natural Join Noter WHERE utilisateurId = 1";
+            $query = "SELECT * FROM Album Natural Join Noter WHERE utilisateurId =" . $utiId['utilisateurId'];
 
             
             $result = $file_db->query($query);

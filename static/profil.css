@@ -85,7 +85,6 @@ main {
 #card p {
   font-family: courier;
   color: var(--font-color-light);
-  font-size: 1.5em;
 }
 
 #card span {
