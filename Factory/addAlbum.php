@@ -15,9 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nom'])) {
     // Récupérer les données du formulaire
     $nom_album = $_POST['nom'];
     $annee_album = $_POST['annee'];
-    $image_album = $_FILES['imgs']['name']; // Nom du fichier image
+    $image_album = ''; // Initialiser la variable pour stocker l'image en base64
     $producteur = $_POST['producteur'];
     $artiste_id = $_POST['artiste']; // Supposons que c'est l'ID de l'artiste sélectionné
+
+    // Vérifier si un fichier a été téléchargé
+    if(isset($_FILES['imgs']) && $_FILES['imgs']['size'] > 0){
+        // Lire le contenu du fichier image et le convertir en base64
+        $image_album = base64_encode(file_get_contents($_FILES['imgs']['tmp_name']));
+    }
 
     // Liaison des paramètres
     $stmtAlbum->bindParam(':nomAlbum', $nom_album);
@@ -25,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nom'])) {
     $stmtAlbum->bindParam(':imageAlbum', $image_album);
     $stmtAlbum->bindParam(':nomProducteur', $producteur);
     $stmtAlbum->bindParam(':artisteId', $artiste_id);
-
-
 
     // Exécuter la requête
     if ($stmtAlbum->execute()) {
