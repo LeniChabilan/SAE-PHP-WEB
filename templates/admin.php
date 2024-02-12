@@ -82,7 +82,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td scope='row'>".$row['artisteId']."</td>");
                         echo("<td>".$row['nomArtiste']."</td>");
                         echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-trash'></i></a></td>");
+                        echo("<td><a href='../Factory/supArtiste.php?".$row['artisteId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
                 }
@@ -125,7 +125,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['DdN']."</td>");
                         echo("<td>".$row['numTel']."</td>");
                         echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-trash'></i></a></td>");
+                        echo("<td><a href='../Factory/supUtilisateur.php?".$row['utilisateurId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
                 }
@@ -167,7 +167,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['nomProducteur']."</td>");
                         echo("<td>".$row['artisteId']."</td>");
                         echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-trash'></i></a></td>");
+                        echo("<td><a href='../Factory/supAlbum.php?".$row['albumId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
                 }
@@ -205,7 +205,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['dure']."</td>");
                         echo("<td>".$row['albumId']."</td>");
                         echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-trash'></i></a></td>");
+                        echo("<td><a href='../Factory/supMusique.php?".$row['musiqueId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
                 }
