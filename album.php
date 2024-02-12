@@ -53,7 +53,6 @@
             $liste_genre=$file_db->query($genre);
 
 
-            echo"<h1>Album</h1>";
             $quer="SELECT * FROM Musique WHERE albumId = ".$_REQUEST['filter'];
             $res = $file_db->query($quer);
             $rows = $res->fetchAll();

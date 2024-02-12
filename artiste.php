@@ -35,9 +35,6 @@
             <li><a href="./noter.php" class="btn_a btn-lg">
                 <span>Mes Notes</span>
             </a></li>
-            <li><a href="./artiste.php" class="btn_a btn-lg">
-                <span>Artiste</span>
-            </a></li>
         </ul>
     </div>
         
@@ -84,15 +81,13 @@
                 echo "<tbody>";
                 for($i=0; $i<count($rows); $i++) {
                     
-                    echo "<tr>";
-                    echo "<a href='album.php?filter=".$rows[$i]['albumId']."'>";
+                    echo "<tr class='ligne' onclick=\"document.location='album.php?filter=".$rows[$i]['albumId']."'\">";
                     echo "<th scope='row'>".$i."</th>";
                     $base64Image = $rows[$i]['imageAlbum'];
                     echo "<td> <img class='albumimg' src='data:image;base64,".$base64Image."' alt='Image Album'></td>";    
                     echo "<td>".$rows[$i]['nomAlbum']."</td>";
                     echo "<td>".$rows[$i]['AnneeAlbum']."</td>";
                     echo "<td>".$rows[$i]['nomProducteur']."</td>";
-                    echo "</a>";
                     echo "</tr>";
                     
                 }

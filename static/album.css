@@ -11,6 +11,15 @@ main{
     justify-content: center;
     align-items: center;
 }
+.desc>a{
+    flex-basis: 70%;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0.5%;
+    color: black;
+    text-decoration:underline;
+}
 
 .album>img{
     margin: 2em;
