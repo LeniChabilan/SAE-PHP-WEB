@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <link rel="stylesheet" href="../static/album.css" />
-  <link rel="stylesheet" href="../static/base.css" />
+  
+  <link rel="stylesheet" href="../static/artiste.css" />
   <link rel="stylesheet" href="../static/home.css" />
-  <link rel="website icon" type="png" href="./Data/images/logomusico.png" />
-
+  <link rel="stylesheet" href="../static/base.css" />
+    <link rel="icon" type="image/png" href="./Data/images/logomusico.png" />
 
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,7 @@
   </head>
   <body class="light">
     
-    <header>
+  <header>
         <div class="gauche"><a href="../index.php">
             <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
           </a>
@@ -46,98 +46,67 @@
     </div>
     </aside>
     <main>
-    <?php
-                session_start();
+        <?php
+        session_start();
 
-                // Vérifie si l'utilisateur est connecté
-                if (isset($_SESSION['loggedUser'])) {
-                    $userEmail = $_SESSION['loggedUser']['email'];
-                    // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
-                } else {
-                    // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
-                    header("Location: connexion.php");
-                    exit;
-                }    
-
+        // Vérifie si l'utilisateur est connecté
+        if (isset($_SESSION['loggedUser'])) {
+            $userEmail = $_SESSION['loggedUser']['email'];
+            // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+            header("Location: connexion.php");
+            exit;
+        }    
             $file_db = new PDO('sqlite:../Data/bd.sqlite3');
             $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-            $quryId = "SELECT utilisateurId FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
-            $utiliID = $file_db->query($quryId);
-            $utiId = $utiliID->fetch(); // permet de récupérer l'id de l'utilisateur connecté
-
-            $query = "SELECT *FROM Album
-                    LEFT JOIN Artiste ON Album.artisteId = Artiste.artisteId
-                    WHERE Album.albumId = ".$_REQUEST['filter'];
-
-            $result = $file_db->query($query);
             
-            $genre="SELECT * from Album LEFT JOIN GenreAlbum ON Album.albumId= GenreAlbum.albumId
-            Natural Join Genre
-            WHERE Album.albumId = ".$_REQUEST['filter'];
+            $query = "SELECT * FROM Artiste WHERE artisteId = ".$_REQUEST['filter'];
+                       
+            $result = $file_db->query($query);
+
+            
+            $genre="SELECT * from Album WHERE Album.artisteId = ".$_REQUEST['filter'];
             $liste_genre=$file_db->query($genre);
 
+            $rows=$liste_genre->fetchAll();
 
 
-            $quer="SELECT * FROM Musique WHERE albumId = ".$_REQUEST['filter'];
-            $res = $file_db->query($quer);
-            $rows = $res->fetchAll();
-            
-            $res = $file_db->query($quer);
             if ($result) {
                 foreach ($result as $row) {
                     echo "<div class='album'>";
-                    $base64Image = $row['imageAlbum'];
-                    echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
+                    echo "<img src='../Data/images/liam.jpeg' alt='Image Artiste'>";
                     echo "<div class='desc'>";
-                    echo "<h2>".$row['nomAlbum']."</h2>";
-                    echo "<p>".$row['AnneeAlbum']."</p>";
-                    echo "<p> Producteur :".$row['nomProducteur']."</p>";
-                    echo "<a href='./artiste.php?filter=".$row['artisteId']."'>Artiste :  ".$row['nomArtiste']."</a>";
-                    echo "<p> Nombre de musique : ".Count($rows)."</p>";
-                    echo "<p> Genre :";
-                    if($liste_genre){
-                    foreach($liste_genre as $g){
-                        echo ' ' .$g['nomGenre'];
-                    }
-                    }
-                    echo"</p>";
-                    echo '<div class="rating">
-                    <input value="5" name="rating" id="star5" type="radio">
-                    <label for="star5"></label>
-                    <input value="4" name="rating" id="star4" type="radio">
-                    <label for="star4"></label>
-                    <input value="3" name="rating" id="star3" type="radio">
-                    <label for="star3"></label>
-                    <input value="2" name="rating" id="star2" type="radio">
-                    <label for="star2"></label>
-                    <input value="1" name="rating" id="star1" type="radio">
-                    <label for="star1"></label>
-                    </div>
-                    ';
+                    echo "<h2>".$row['nomArtiste']."</h2>";
                     echo "</div>";
                     echo "</div>";
                 }
             }
-            if ($res) {  
-
+            if ($liste_genre) {  
+                
                 echo "<div class='musique'>";
-                echo "<h2> Liste des musiques </h2>";
                 echo "<table class='table'>";
                 echo "<thead>";
                 echo "<tr>";
                 echo "<th scope='col'>#</th>";
+                echo "<th scope='col'>Images</th>";
                 echo "<th scope='col'>Titre</th>";
-                echo "<th scope='col'>Durée</th>";
+                echo "<th scope='col'>Année</th>";
+                echo "<th scope='col'>Producteur</th>";
                 echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
                 for($i=0; $i<count($rows); $i++) {
-                    echo "<tr>";
+                    
+                    echo "<tr class='ligne' onclick=\"document.location='album.php?filter=".$rows[$i]['albumId']."'\">";
                     echo "<th scope='row'>".$i."</th>";
-                    echo "<td>".$rows[$i]['nomMusique']."</td>";
-                    echo "<td>".$rows[$i]['dure']."</td>";
+                    $base64Image = $rows[$i]['imageAlbum'];
+                    echo "<td> <img class='albumimg' src='data:image;base64,".$base64Image."' alt='Image Album'></td>";    
+                    echo "<td>".$rows[$i]['nomAlbum']."</td>";
+                    echo "<td>".$rows[$i]['AnneeAlbum']."</td>";
+                    echo "<td>".$rows[$i]['nomProducteur']."</td>";
                     echo "</tr>";
+                    
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -151,3 +120,5 @@
     <footer>
       <div class="fin"><p>© 2024 MUSIC'O. Tous droits réservés.</p></div>      
     </footer>
+    </body>
+</html>
