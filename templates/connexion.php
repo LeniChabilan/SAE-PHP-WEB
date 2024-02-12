@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $loggedUser = [
                         'email' => $user['emailUtilisateur'],
                         'name' => $user['nomUtilisateur'],
+                        'id'=>$user['utilisateurId'],
                     ];
 
                     $_SESSION['loggedUser'] = $loggedUser;
