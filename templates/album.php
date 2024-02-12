@@ -22,6 +22,7 @@
 
         <div class="droite">
             <a href="./deconnexion.php"><button type="button" id="bouton_se_connecter">Déconnexion</button></a>
+            <a href="profil.php">
             <button class="BtnProf">
                 <span class="svgContainerProf">
                     <svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +33,7 @@
                 </span>
                 <span class="BGP"></span>
             </button>
+            </a>
         </div>
     </header>
     <div class="centre">
@@ -133,6 +135,8 @@
                     $alId= $_REQUEST['filter']; 
                     echo "<form role='form' method='POST' action='../Factory/addToPlaylist.php?albumId=".$alId."'>"; ?>
                     <div class="input-container">
+                <div class="selectdiv">
+
                 <select name="playlist" id="pet-select" class="input">
                 <?php
                 session_start(); 
@@ -147,10 +151,13 @@
                     };?>
                 
                 </select>
-                <div class="cut"></div>
-                <label class="iLabel" for="playlist">Playlist</label>
+                </div>
+                <button class="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20" fill="none" class="svg-icon"><g stroke-width="1.5" stroke-linecap="round" stroke="#fc792e"><circle r="7.5" cy="10" cx="10"></circle><path d="m9.99998 7.5v5"></path><path d="m7.5 9.99998h5"></path></g></svg>
+            <span class="lable">Add</span>
+            </button>
             </div>
-            <button class="submit" type="text" >Ajouter à la Playlist</button>
+
             </form>
                     <?php
                 }
