@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nom'])) {
     // Exécuter la requête
     if ($stmtAlbum->execute()) {
         // Redirection vers la page d'accueil ou une autre page après l'ajout réussi
-        header("Location: ../templates/admin.php?filter=liste_Albums");
+        header("Location: ../templates/admin.php?filter=liste_album");
         exit(); // Assurez-vous de terminer le script après la redirection
     } else {
         echo "Une erreur est survenue lors de l'ajout de l'album.";

@@ -1,14 +1,13 @@
 <?php
-session_start(); // Démarrez la session si ce n'est pas déjà fait
+session_start(); 
 
-// Vérifiez si l'utilisateur est connecté
+
 if (!isset($_SESSION['loggedUser'])) {
-    // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    
     header("Location: ./templates/connexion.php"); // Redirection vers connexion.php
-    exit; // Assurez-vous de terminer l'exécution du script après la redirection
+    exit; 
 }
 
-// Le reste de votre code pour la page d'accueil commence ici
 
 ?>
 
