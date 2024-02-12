@@ -128,6 +128,31 @@
                     ';
                     echo "</div>";
                     echo "</div>";
+                    
+                    
+                    $alId= $_REQUEST['filter']; 
+                    echo "<form role='form' method='POST' action='../Factory/addToPlaylist.php?albumId=".$alId."'>"; ?>
+                    <div class="input-container">
+                <select name="playlist" id="pet-select" class="input">
+                <?php
+                session_start(); 
+                $idUser=$_SESSION['loggedUser']['id'];
+
+                $query = "SELECT * FROM Playlist where utiId= $idUser";
+                $result = $file_db->query($query);
+                if($result){
+                    foreach($result as $row){
+                        echo "<option value='".$row['playlistId']."'>".$row['nomPlaylist']."</option>";
+                    }
+                    };?>
+                
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="playlist">Playlist</label>
+            </div>
+            <button class="submit" type="text" >Ajouter à la Playlist</button>
+            </form>
+                    <?php
                 }
             }
             if ($res) {
