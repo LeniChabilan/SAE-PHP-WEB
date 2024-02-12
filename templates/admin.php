@@ -215,10 +215,14 @@ if(isset($_REQUEST['filter'])) {
             <?php
             break;
         case 'addAlbum':
+            $query = "SELECT * FROM Genre";
+            $result = $file_db->query($query);
+            $query2 = "SELECT * FROM Artiste";
+            $result2 = $file_db->query($query2);
             ?>
             <div class="form">
             <div class="title">Ajouter les informations d'un Album !</div>
-            <form role="form" method="POST" action="lien_vers_creation_groupe_gr" enctype="multipart/form-data">
+            <form role="form" method="POST" action="../Factory/addAlbum.php" enctype="multipart/form-data">
             <div class="input-container">
                 <input placeholder="Nom de l'album" type="text" class="input" name="nom" value="" required>
                 <div class="cut"></div>
@@ -240,16 +244,26 @@ if(isset($_REQUEST['filter'])) {
             </div>
             <div class="input-container">
                 <select name="style" id="pet-select" class="input">
-                <option value="style1">Rock</option>
-                <option value="style2">Arabe</option>
+                <?php
+                if($result){
+                    foreach($result as $row){
+                        echo "<option value='".$row['genreId']."'>".$row['nomGenre']."</option>";
+                    }
+                    };?>
+                
                 </select>
                 <div class="cut"></div>
                 <label class="iLabel" for="style">Style</label>
             </div>
             <div class="input-container">
                 <select name="artiste" id="pet-select" class="input">
-                <option value="artiste1">Pierre</option>
-                <option value="artiste2">Paul</option>
+                <?php
+                if($result2){
+                    foreach($result2 as $row2){
+                        echo "<option value='".$row2['artisteId']."'>".$row2['nomArtiste']."</option>";
+                    }
+                    };?>
+               
                 </select>
                 <div class="cut"></div>
                 <label class="iLabel" for="artiste">Artiste</label>
@@ -260,10 +274,12 @@ if(isset($_REQUEST['filter'])) {
             <?php
             break;
         case 'addMusique':
+            $query = "SELECT * FROM Album";
+            $result = $file_db->query($query);
             ?>
             <div class="form">
             <div class="title">Ajouter une Musique !</div>
-            <form role="form" method="POST" action="#" >
+            <form role="form" method="POST" action="../Factory/addMusique.php" >
               <div class="input-container">
                 <input placeholder="Nom de la Musique" type="text" class="input" name="nom" value="" required>
                 <div class="cut"></div>
@@ -276,8 +292,13 @@ if(isset($_REQUEST['filter'])) {
               </div>
               <div class="input-container">
                 <select name="album" id="pet-select" class="input">
-                  <option value="album1">Album X</option>
-                  <option value="album2">Album Y</option>
+                <?php
+                if($result){
+                    foreach($result as $row){
+                        echo "<option value='".$row['albumId']."'>".$row['nomAlbum']."</option>";
+                    }
+                    };?>
+                  
                 </select>
                 <div class="cut"></div>
                 <label class="iLabel" for="album">Album</label>

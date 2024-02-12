@@ -6,21 +6,25 @@ try {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
 
-$insertArtiste = "INSERT INTO Artiste (nomArtiste) VALUES (:nomArtiste)";
-$stmtArtiste = $file_db->prepare($insertArtiste);
+$insertMusique = "INSERT INTO Musique (nomMusique,dure,albumId) VALUES (:nomMusique,:dure,:albumId)";
+$stmtMusique = $file_db->prepare($insertMusique);
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nom'])) {
     // Récupérer les données du formulaire
-    $nom_artiste = $_POST['nom'];
+    $nom_musique = $_POST['nom'];
+    $duree=$_POST['dure'];
+    $album_id=$_POST['album'];
 
     // Liaison des paramètres
-    $stmtArtiste->bindParam(':nomArtiste', $nom_artiste);
+    $stmtMusique->bindParam(':nomMusique', $nom_musique);
+    $stmtMusique->bindParam(':dure', $duree);
+    $stmtMusique->bindParam(':albumId', $album_id);
 
     // Exécuter la requête
-    if ($stmtArtiste->execute()) {
+    if ($stmtMusique->execute()) {
         // Redirection vers la page d'accueil après l'ajout réussi
-        header("Location: ../templates/admin.php?filter=liste_Artistes");
+        header("Location: ../templates/admin.php?filter=liste_musique");
         exit(); // Assurez-vous de terminer le script après la redirection
     } else {
         echo "Une erreur est survenue lors de l'ajout de l'artiste.";
