@@ -81,7 +81,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<tr>");
                         echo("<td scope='row'>".$row['artisteId']."</td>");
                         echo("<td>".$row['nomArtiste']."</td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
+                        echo("<td><a href='?filter=modifArtiste'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supArtiste.php?".$row['artisteId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -109,7 +109,6 @@ if(isset($_REQUEST['filter'])) {
                         <th scope="col">Date de naissance</th>
                         <th scope="col">Numéro de téléphone</th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -124,7 +123,6 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['roleUtilisateur']."</td>");
                         echo("<td>".$row['DdN']."</td>");
                         echo("<td>".$row['numTel']."</td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supUtilisateur.php?".$row['utilisateurId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -166,7 +164,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td></td>");
                         echo("<td>".$row['nomProducteur']."</td>");
                         echo("<td>".$row['artisteId']."</td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
+                        echo("<td><a href='?filter=modifAlbum'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supAlbum.php?".$row['albumId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -204,7 +202,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['nomMusique']."</td>");
                         echo("<td>".$row['dure']."</td>");
                         echo("<td>".$row['albumId']."</td>");
-                        echo("<td><a href='#'><i class='fa-solid fa-pen'></i></a></td>");
+                        echo("<td><a href='?filter=modifMusique'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supMusique.php?".$row['musiqueId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -323,6 +321,115 @@ if(isset($_REQUEST['filter'])) {
             </div>
             <?php
             break;
+        case 'modifArtiste':
+            ?>
+            <div class="form">
+                <div class="title">Modifier un Artiste !</div>
+                <form role="form" method="POST" action="../Factory/modifArtiste.php" >
+                <div class="input-container">
+                    <input placeholder="Nom de l'artiste" type="text" class="input" name="nom" value="" required>
+                    <div class="cut"></div>
+                    <label class="iLabel" for="nom">Nom de l'artiste</label>
+                </div>
+                <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+                </form>
+            </div>
+            <?php
+            break;
+        case 'modifAlbum':
+            $query = "SELECT * FROM Genre";
+            $result = $file_db->query($query);
+            $query2 = "SELECT * FROM Artiste";
+            $result2 = $file_db->query($query2);
+            ?>
+            <div class="form">
+            <div class="title">Modifier les informations d'un Album !</div>
+            <form role="form" method="POST" action="../Factory/modifAlbum.php" enctype="multipart/form-data">
+            <div class="input-container">
+                <input placeholder="Nom de l'album" type="text" class="input" name="nom" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="nom">Nom de l'album</label>
+            </div>
+            <div class="input-container">
+                <input placeholder="Année" type="text" class="input" name="annee" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="Année">Année</label>
+            </div>
+            <div class="input-container">
+                <label class="image" for="imgs">Insérer votre Image</label>
+                <input class="image" type="file" id="imgs" name="imgs" accept="image/png, image/jpeg">
+            </div>
+            <div class="input-container">
+                <input placeholder="Producteur" type="text" class="input" name="producteur" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="producteur">Producteur</label>
+            </div>
+            <div class="input-container">
+                <select name="style" id="pet-select" class="input">
+                <?php
+                if($result){
+                    foreach($result as $row){
+                        echo "<option value='".$row['genreId']."'>".$row['nomGenre']."</option>";
+                    }
+                    };?>
+                
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="style">Style</label>
+            </div>
+            <div class="input-container">
+                <select name="artiste" id="pet-select" class="input">
+                <?php
+                if($result2){
+                    foreach($result2 as $row2){
+                        echo "<option value='".$row2['artisteId']."'>".$row2['nomArtiste']."</option>";
+                    }
+                    };?>
+               
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="artiste">Artiste</label>
+            </div>
+            <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+            </form>
+            </div>
+            <?php
+            break;
+        case 'modifMusique':
+            $query = "SELECT * FROM Album";
+            $result = $file_db->query($query);
+            ?>
+            <div class="form">
+            <div class="title">Modifier une Musique !</div>
+            <form role="form" method="POST" action="../Factory/modifMusique.php" >
+              <div class="input-container">
+                <input placeholder="Nom de la Musique" type="text" class="input" name="nom" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="nom">Nom de la Musique</label>
+              </div>
+              <div class="input-container">
+                <input placeholder="" type="time" class="input" name="dure" value="" required>
+                <div class="cut"></div>
+                <label class="iLabel" for="dure">Durée</label>
+              </div>
+              <div class="input-container">
+                <select name="album" id="pet-select" class="input">
+                <?php
+                if($result){
+                    foreach($result as $row){
+                        echo "<option value='".$row['albumId']."'>".$row['nomAlbum']."</option>";
+                    }
+                    };?>
+                  
+                </select>
+                <div class="cut"></div>
+                <label class="iLabel" for="album">Album</label>
+              </div>
+              <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
+            </form>
+          </div>
+            <?php
+            break; 
         default:
             echo("<h2 class='bienvenue'>Bienvenue dans le module administrateur</h2>");
             break;
