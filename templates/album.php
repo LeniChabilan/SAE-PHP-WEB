@@ -95,11 +95,13 @@
                     $base64Image = $row['imageAlbum'];
                     echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
                     echo "<div class='desc'>";
-                    echo "<h2>" . $row['nomAlbum'] . "</h2>";
-                    echo "<p>" . $row['AnneeAlbum'] . "</p>";
-                    echo "<p> Producteur :" . $row['nomProducteur'] . "</p>";
-                    echo "<p>Artiste :  " . $row['nomArtiste'] . "</p>";
-                    echo "<p> Nombre de musique : " . Count($rows) . "</p>";
+
+                    echo "<h2>".$row['nomAlbum']."</h2>";
+                    echo "<p>".$row['AnneeAlbum']."</p>";
+                    echo "<p> Producteur :".$row['nomProducteur']."</p>";
+                    echo "<a href='./artiste.php?filter=".$row['artisteId']."'>Artiste :  ".$row['nomArtiste']."</a>";
+                    echo "<p> Nombre de musique : ".Count($rows)."</p>";
+
                     echo "<p> Genre :";
                     if ($liste_genre) {
                         foreach ($liste_genre as $g) {
