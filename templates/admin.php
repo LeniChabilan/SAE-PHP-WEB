@@ -81,7 +81,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<tr>");
                         echo("<td scope='row'>".$row['artisteId']."</td>");
                         echo("<td>".$row['nomArtiste']."</td>");
-                        echo("<td><a href='?filter=modifArtiste'><i class='fa-solid fa-pen'></i></a></td>");
+                        echo("<td><a href='?filter=modifArtiste&artisteId=".$row['artisteId']."'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supArtiste.php?".$row['artisteId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -324,13 +324,22 @@ if(isset($_REQUEST['filter'])) {
         case 'modifArtiste':
             ?>
             <div class="form">
-                <div class="title">Modifier un Artiste !</div>
-                <form role="form" method="POST" action="../Factory/modifArtiste.php" >
-                <div class="input-container">
-                    <input placeholder="Nom de l'artiste" type="text" class="input" name="nom" value="" required>
-                    <div class="cut"></div>
-                    <label class="iLabel" for="nom">Nom de l'artiste</label>
-                </div>
+            <?php
+            $nomArtiste = $_GET['artisteId'];
+            $query = "SELECT * FROM Artiste where artisteId =".$nomArtiste;
+            $result = $file_db->query($query);
+            $result = $result->fetch();
+            ?>
+            <div class="title">Modifier un Artiste !</div>
+            <form role="form" method="POST" action="../Factory/modifArtiste.php" >
+            <div class="input-container">
+                <input type="hidden" name="id" value="<?php echo $result['artisteId']; ?>">
+                <input placeholder="Nom de l'artiste" type="text" class="input" name="nom" value="<?php echo $result['nomArtiste']; ?>" required>
+                <div class="cut"></div>
+                <?php
+                echo "<label class='iLabel' for='nom'>Nom de l'artiste</label>";
+                ?>
+            </div>
                 <button class="submit" type="text" onclick="showConfirmationEnregistrer()">Enregistrer</button>
                 </form>
             </div>
