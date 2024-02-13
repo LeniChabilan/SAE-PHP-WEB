@@ -83,13 +83,16 @@
 
             $result = $file_db->query($query);
 
-
+            
             
             if ($result) {
                 foreach ($result as $row) {
                   echo "<li>";
+                  echo"<div class='test'>";
                     echo "<h2 class='nomPlaylist'>". $row['nomPlaylist']."</h2>";
-                    echo "<ul class='listeAl'>";
+                      echo "<a href='../Factory/supPlaylist.php?".$row['playlistId']."' class='poubelle'><i class='fa-solid fa-trash'></i></a>";
+                      echo "</div>";
+                      echo "<ul class='listeAl'>";
                     $res = "SELECT * FROM Playlist natural join PlaylistAlbum natural join Album WHERE utiId = " . $utiId['utilisateurId'] . " and playlistId = " . $row['playlistId'];
                     $resa=$file_db->query($res);
                     foreach ($resa as $rowa) {
@@ -97,7 +100,10 @@
                     echo "<a href='album.php?filter=".$rowa['albumId']."'>";
                     $base64Image = $rowa['imageAlbum'];
                     echo "<img src='data:image;base64," . $base64Image . "' alt='Image Album'>";
-                    echo "<p class='nomAl'>" . $rowa['nomAlbum'] . "</p>";
+                    echo "<div class='inlineElem'>";
+                      echo "<p class='nomAl'>" . $rowa['nomAlbum']." </p>";
+                      echo "<a href='../Factory/supPlaylistLine.php?playlistId=" . $row['playlistId'] . "&albumId=" . $rowa['albumId'] . "' class='poubelle'><i class='fa-solid fa-trash'></i></a>";
+                    echo "</div>";
                     echo "</a>";
                     echo "</li>";
                     }

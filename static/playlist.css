@@ -3,6 +3,7 @@
 }
 main{
     min-height: 100%;
+    height: 88vh;
 }
 .test{
     width: 100%;
@@ -22,6 +23,14 @@ main{
 }
 li{
     list-style: none;
+}
+.test{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.test>h2{
+  flex-basis: 80%;
 }
 
 .btnplay {
@@ -68,3 +77,18 @@ li{
     fill: white;
     transform: scale(1.2);
   } 
+
+
+.poubelle {
+    cursor: pointer;
+    color: #fc792e;
+}
+
+.inlineElem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8%;
+
+}
+
