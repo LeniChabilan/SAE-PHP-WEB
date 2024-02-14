@@ -81,7 +81,7 @@ $res = $file_db->query($quryId);
             <div class="bouton">
                 <ul class="liste_bouton">
                     <li class="logout">
-                        <a href="path/to/modifier_profil" id="fond_boutone" class="noligne">
+                        <a href="modificationUtilisateur.php" id="fond_boutone" class="noligne">
                             <button type="button" class="button type1">Modifier</button>
                         </a>
                     </li>
