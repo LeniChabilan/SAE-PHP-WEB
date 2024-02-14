@@ -16,6 +16,7 @@ $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 $quryId = "SELECT * FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
 $res = $file_db->query($quryId);
+$res = $res->fetch();
 
 ?>
 
@@ -68,20 +69,20 @@ $res = $file_db->query($quryId);
             <img src="../Data/images/imageartiste.jpg"/>
             <div class="info">
                 <?php
-                foreach ($res as $row) {
-                    echo "<h2>".$row['nomUtilisateir']."</h2>";
-                    echo "<p> email : ".$row['emailUtilisateur']."</p>";
-                    echo "<p> Mdp : ".$row['MDPutilisateur']."</p>";
-                    echo "<p> Role : ".$row['roleUtilisateur']."</p>";
-                    echo "<p> Tel : ".$row['numTel']."</p>";
-                    echo "<p> DdN : ".$row['DdN']."</p>";
-                }
+                
+                    echo "<h2>".$res['nomUtilisateir']."</h2>";
+                    echo "<p> email : ".$res['emailUtilisateur']."</p>";
+                    echo "<p> Mdp : ".$res['MDPutilisateur']."</p>";
+                    echo "<p> Role : ".$res['roleUtilisateur']."</p>";
+                    echo "<p> Tel : ".$res['numTel']."</p>";
+                    echo "<p> DdN : ".$res['DdN']."</p>";
+            
                 ?>
             </div>
             <div class="bouton">
                 <ul class="liste_bouton">
                     <li class="logout">
-                        <a href="modificationUtilisateur.php" id="fond_boutone" class="noligne">
+                        <a href="modificationUtilisateur.php?utilisateurId=<?php $res["utilisateurId"] ?>" id="fond_boutone" class="noligne">
                             <button type="button" class="button type1">Modifier</button>
                         </a>
                     </li>

@@ -24,11 +24,11 @@
                 <form class="form-horizontal" role="form" method="POST" action="../Factory/addUtilisateur.php">
                     <div class="field">
                         <svg class="input-icon"><!--SVG ici --></svg>
-                        <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50">
+                        <input type="text" name="nomUtilisateur" class="input-field" placeholder=" Nom Utilisateur" size="50">
                     </div>
                     <div class="field">
                         <svg class="input-icon"><!--SVG ici --></svg>
-                        <input type="text" name="emailUtilisateur" class="input-field" placeholder="Nom Utilisateur" size="50">
+                        <input type="email" name="emailUtilisateur" class="input-field" placeholder="Adresse Mail" size="50">
                     </div>
                     <!-- Champ Date de Naissance -->
                     <div class="field">
