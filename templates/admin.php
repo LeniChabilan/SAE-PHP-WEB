@@ -203,7 +203,7 @@ if(isset($_REQUEST['filter'])) {
                         echo("<td>".$row['nomMusique']."</td>");
                         echo("<td>".$row['dure']."</td>");
                         echo("<td>".$row['albumId']."</td>");
-                        echo("<td><a href='?filter=modifMusique'><i class='fa-solid fa-pen'></i></a></td>");
+                        echo("<td><a href='?filter=modifMusique&musiqueId=".$row['musiqueId']."'><i class='fa-solid fa-pen'></i></a></td>");
                         echo("<td><a href='../Factory/supMusique.php?".$row['musiqueId']."'><i class='fa-solid fa-trash'></i></a></td>");
                         echo("</tr>");
                     }
@@ -409,20 +409,27 @@ if(isset($_REQUEST['filter'])) {
             </div>
             <?php
             break;
+
         case 'modifMusique':
             $query = "SELECT * FROM Album";
             $result = $file_db->query($query);
+            $id_music = $_GET['musiqueId'];
+            $result3= $file_db->query("SELECT * FROM Musique where musiqueId =".$id_music);
+            $result3 = $result3->fetch();
+            $dure = $result3["dure"];
+            $dureFormatted = date('H:i', strtotime($dure));
             ?>
             <div class="form">
             <div class="title">Modifier une Musique !</div>
             <form role="form" method="POST" action="../Factory/modifMusique.php" >
               <div class="input-container">
-                <input placeholder="Nom de la Musique" type="text" class="input" name="nom" value="" required>
+                <input type="hidden" name="id" value="<?php echo $result3['musiqueId']; ?>">
+                <input placeholder="Nom de la Musique" type="text" class="input" name="nom" value="<?php echo $result3["nomMusique"]?>" required>
                 <div class="cut"></div>
                 <label class="iLabel" for="nom">Nom de la Musique</label>
               </div>
               <div class="input-container">
-                <input placeholder="" type="time" class="input" name="dure" value="" required>
+                <input placeholder="" type="time" class="input" name="dure" value="<?php echo $dureFormatted?>" required>
                 <div class="cut"></div>
                 <label class="iLabel" for="dure">Durée</label>
               </div>
