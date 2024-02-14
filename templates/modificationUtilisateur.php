@@ -18,27 +18,49 @@
       </div>
         
     </header>
+    <?php
+    session_start();
+
+    // Vérifie si l'utilisateur est connecté
+    if (isset($_SESSION['loggedUser'])) {
+        $userEmail = $_SESSION['loggedUser']['email'];
+        // Utilisez $userEmail ou d'autres informations de l'utilisateur selon vos besoins
+    } else {
+        // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion par exemple
+        header("Location: connexion.php");
+        exit;
+    }
+    $file_db = new PDO('sqlite:../Data/bd.sqlite3');
+    $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+    
+
+    $quryId = "SELECT * FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
+    $utiliID = $file_db->query($quryId);
+    $resuult = $utiliID->fetch();
+    $date = date('Y-m-d', strtotime($result['DdN']));
+    ?>
         <div class="main">
             <div class="card">
                 <h4 class="title">Modifier votre compte</h4>
                 <form class="form-horizontal" role="form" method="POST" action="../Factory/modifUtilisateur.php">
                     <div class="field">
-                        <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50">
+                        <input type="hidden" name="idUtilisateur" value="<?php echo $resuult["idUtilisateur"]?>">
+                        <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50" value="<?php echo $resuult["nomUtilisateir"]?>">
                     </div>
                     <div class="field">
-                        <input type="text" name="emailUtilisateur" class="input-field" placeholder="Nom Utilisateur" size="50">
+                        <input type="text" name="emailUtilisateur" class="input-field" placeholder="Nom Utilisateur" size="50" value="<?php echo $resuult["emailUtilisateur"]?>">
                     </div>
                     <div class="field">
-                        <input type="date" name="DdN" class="input-field" placeholder="Date de Naissance">
+                        <input type="date" name="DdN" class="input-field" placeholder="Date de Naissance" value="<?php echo $date?>">
                     </div>
                     <div class="field">
-                        <input type="tel" name="tel" class="input-field" placeholder="Numéro de Téléphone" size="50">
+                        <input type="tel" name="tel" class="input-field" placeholder="Numéro de Téléphone" size="50" value="<?php echo $resuult["numTel"]?>">
                     </div>
                     <div class="field">
-                        <input type="password" name="MDPUtilisateur" id="mdp" class="input-field" placeholder="Mot De Passe" size="50">
+                        <input type="password" name="MDPUtilisateur" id="mdp" class="input-field" placeholder="Mot De Passe" size="50" value="<?php echo $resuult["MDPutilisateur"]?>">
                     </div>
                     <div class="field">
-                        <input type="password" name="confirmMDPUtilisateur" id="confirm_mdp" class="input-field" placeholder="Confirmé mot De Passe" size="50">
+                        <input type="password" name="confirmMDPUtilisateur" id="confirm_mdp" class="input-field" placeholder="Confirmé mot De Passe" size="50" value="<?php echo $resuult["MDPutilisateur"]?>">
                     </div>
                     <div id="error-message" style="color: rgb(219, 36, 36);"></div>
                     <div class="form-group">
