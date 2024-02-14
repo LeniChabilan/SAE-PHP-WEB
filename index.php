@@ -80,6 +80,7 @@ if (!isset($_SESSION['loggedUser'])) {
                     event.preventDefault(); // Empêche la soumission du formulaire par défaut
 
                     var searchTerm = document.querySelector(".searchTerm").value;
+                    document.querySelector(".searchTerm").value = "";
 
                     // Envoie de la valeur de recherche au serveur via AJAX
                     var xhr = new XMLHttpRequest();
@@ -92,6 +93,7 @@ if (!isset($_SESSION['loggedUser'])) {
                         }
                     };
                     xhr.send();
+
                 });
 
                 function updateAlbumList(albums) {
