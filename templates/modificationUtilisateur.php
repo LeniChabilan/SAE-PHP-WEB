@@ -37,21 +37,20 @@
     $quryId = "SELECT * FROM Utilisateur WHERE emailUtilisateur = '".$userEmail."'";
     $utiliID = $file_db->query($quryId);
     $resuult = $utiliID->fetch();
-    $date = date('Y-m-d', strtotime($result['DdN']));
     ?>
         <div class="main">
             <div class="card">
                 <h4 class="title">Modifier votre compte</h4>
                 <form class="form-horizontal" role="form" method="POST" action="../Factory/modifUtilisateur.php">
                     <div class="field">
-                        <input type="hidden" name="idUtilisateur" value="<?php echo $resuult["idUtilisateur"]?>">
+                        <input type="hidden" name="idUtilisateur" value="<?php echo $resuult["utilisateurId"]?>">
                         <input type="text" name="nomUtilisateur" class="input-field" placeholder="Adress Mail" size="50" value="<?php echo $resuult["nomUtilisateir"]?>">
                     </div>
                     <div class="field">
                         <input type="text" name="emailUtilisateur" class="input-field" placeholder="Nom Utilisateur" size="50" value="<?php echo $resuult["emailUtilisateur"]?>">
                     </div>
                     <div class="field">
-                        <input type="date" name="DdN" class="input-field" placeholder="Date de Naissance" value="<?php echo $date?>">
+                        <input type="date" name="DdN" class="input-field" placeholder="Date de Naissance" value="<?php echo $resuult["DdN"]?>">
                     </div>
                     <div class="field">
                         <input type="tel" name="tel" class="input-field" placeholder="Numéro de Téléphone" size="50" value="<?php echo $resuult["numTel"]?>">

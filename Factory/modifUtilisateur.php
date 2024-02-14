@@ -9,11 +9,11 @@ try {
 }
 
 // Requête SQL pour vérifier si l'email existe déjà
-$checkEmailQuery = "SELECT COUNT(*) FROM Utilisateur WHERE emailUtilisateur = :email";
+$checkEmailQuery = "SELECT COUNT(*) FROM Utilisateur WHERE emailUtilisateur = :email and utilisateurId != :idUtilisateur";
 $stmtCheckEmail = $file_db->prepare($checkEmailQuery);
 
 // Requête SQL pour insérer un nouvel utilisateur
-$updateUtilisateur = "UPDATE Utilisateur SET nomUtilisateir = :nomUtilisateur, emailUtilisateur = :emailUtilisateur, MDPutilisateur = :MDPutilisateur, roleUtilisateur = :roleUtilisateur, DdN = :DdN, numTel = :numTel WHERE idUtilisateur = :idUtilisateur";
+$updateUtilisateur = "UPDATE Utilisateur SET nomUtilisateir = :nomUtilisateur, emailUtilisateur = :emailUtilisateur, MDPutilisateur = :MDPutilisateur, roleUtilisateur = :roleUtilisateur, DdN = :DdN, numTel = :numTel WHERE utilisateurId = :idUtilisateur";
 $stmtUtilisateur = $file_db->prepare($updateUtilisateur);
 
 // Vérifiez si le formulaire a été soumis
@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nomUtilisateur'], $_PO
         exit(); // Assurez-vous de terminer le script après la redirection
     } else {
         // Liaison des paramètres pour l'insertion de l'utilisateur
-        $smtpUtilisateur->bindParam(':idUtilisateur', $idUtilisateur);
+        // Liaison des paramètres pour l'insertion de l'utilisateur
+        $stmtUtilisateur->bindParam(':idUtilisateur', $idUtilisateur);
         $stmtUtilisateur->bindParam(':nomUtilisateur', $nomUtilisateur);
         $stmtUtilisateur->bindParam(':emailUtilisateur', $emailUtilisateur);
         $stmtUtilisateur->bindParam(':DdN', $DdN);
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nomUtilisateur'], $_PO
         // Exécuter la requête d'insertion de l'utilisateur
         if ($stmtUtilisateur->execute()) {
             // Redirection vers la page de connexion après l'inscription réussie
-            header("Location: ../templates/connexion.php");
+            header("Location: ../templates/profil.php");
             exit(); // Assurez-vous de terminer le script après la redirection
         } else {
             // En cas d'erreur lors de l'exécution de la requête SQL
