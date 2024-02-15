@@ -439,7 +439,24 @@ $file_db->exec("INSERT INTO Musique (nomMusique, dure, albumId) VALUES
     ('Dirty Nightgown', '5:19', 20),
     ('Two Lucky Bums', '2:28', 20)");
 
+// Album 21
+$file_db->exec("INSERT INTO Musique (nomMusique, dure, albumId) VALUES
+    ('Hier', '3:16', 21),
+    ('Jour (Est-ce que tu m''aimes ?)', '3:54', 21),
+    ('Équinoxe (Love you)', '4:33', 21),
+    ('Nuit (Aïe Aïe Aïe)', '3:26', 21),
+    ('Insomnie', '3:36', 21),
+    ('Demain', '3:09', 21)");
 
+// Album 22
+$file_db->exec("INSERT INTO Musique (nomMusique, dure, albumId) VALUES
+    ('Couleur Coule', '3:20', 22),
+    ('Tableau', '3:47', 22),
+    ('Putain d''Vide', '3:50', 22),
+    ('Bleu', '2:38', 22),
+    ('Rose', '3:08', 22),
+    ('Vert', '3:38', 22),
+    ('Peindre', '3:49', 22)");
 
 
 $file_db->exec("INSERT INTO Utilisateur (nomUtilisateir, emailUtilisateur, MDPutilisateur, roleUtilisateur, DdN, numTel) VALUES
