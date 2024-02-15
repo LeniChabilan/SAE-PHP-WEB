@@ -138,3 +138,17 @@
   parent: Dave Alvin
   releaseYear: 2011
   title: Eleven Eleven
+- by: 4am-Liam
+  entryId: 11055
+  genre: [Rap, Hip-Hop]
+  img: aujourdhui.png
+  parent: Liam Sottier
+  releaseYear: 2023
+  title: Aujourd'hui
+- by: 4am-Liam
+  entryId: 11555
+  genre: [Rap, Hip-Hop]
+  img: Peindre.JPEG
+  parent: Liam Sottier
+  releaseYear: 2024
+  title: Peindre
