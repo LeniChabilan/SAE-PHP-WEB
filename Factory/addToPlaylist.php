@@ -10,7 +10,9 @@ try {
 $insertPlaylist = "INSERT INTO PlaylistAlbum (playlistId, albumId) VALUES (:playlistId, :albumId)";
 $stmtPlaylist = $file_db->prepare($insertPlaylist);
 
-
+if (!isset($_POST['$playlist'])){
+    header("Location: ../templates/ajoutPlaylist.php");
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['playlist'])) {

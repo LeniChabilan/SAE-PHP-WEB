@@ -35,7 +35,7 @@ $res = $res->fetch();
     <body class="light">
     
         <header>
-            <div class="gauche"><a href="">
+            <div class="gauche"><a href="../index.php">
                 <img class="img_base" id="img1" src="../Data/images/logomusico.png" alt="image du logo de l'application" />
               </a>
           </div>
