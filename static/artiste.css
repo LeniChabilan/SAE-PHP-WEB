@@ -146,8 +146,8 @@ th {
 
 
 .ligne:hover{
-    background-color: #ffeba7;
-    color: #2a2b38;
+    background-color: #303033;
+    color: #fc792e;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
     cursor: pointer;
