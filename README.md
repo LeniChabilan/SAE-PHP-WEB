@@ -65,3 +65,18 @@ Mot de Passe Utilisateur : admin123
 
 
 ## Désormais, explorez Musico à votre guise en naviguant à travers ses différentes pages. Consultez les différents artistes, albums et morceaux disponibles, et gérez ces données selon vos préférences. Notez vos albums préférés et créez des playlists avec vos albums favoris.
+
+
+
+## Diagrammes 
+
+Le schema du MCD de la base de données est disponnible dans le dossier Diagrammes, ou consultable avec le lien ci-dessous.
+
+En l'abscence de l'utilisation de classe dans notre conception nous ne pouvons pas fournir le diagramme de classe et le diagramme de séquence qui ne sont donc pas réalisables.
+
+### MCD
+
+https://drive.google.com/file/d/1UvfFM3pFIghPhRzkY1Ncn-o5Ldz2lNRA/view?usp=sharing
+
+### Diagramme d'activité
+https://drive.google.com/file/d/1B8reKpdn4k4sk9Rj0iE2YdqUgwpZi4Cj/view?usp=sharing
