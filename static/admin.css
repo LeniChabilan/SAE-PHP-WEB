@@ -1,0 +1,98 @@
+.bouton_de_retour {
+    appearance: none;
+    background-color: #2a2b38;
+    color: #ffeba7;
+    margin-top: 5vh;
+    margin-left: 3vw;
+    height: 6vh;
+    width: 7vw;
+    text-align: center;
+    font-size: 2vh;
+    box-sizing: border-box;
+    border-radius: 0.9375em;
+    border: none;
+}
+
+.bouton_de_retour:disabled {
+    pointer-events: none;
+}
+
+.bouton_de_retour:hover {
+    color: #2a2b38;
+    background-color: #ffeba7;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.bouton_de_retour:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+table{
+    margin-top: 4vh;
+}
+
+.middle {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 3%;
+}
+
+#tete_page {
+    display: flex;
+}
+
+#modification {
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+}
+
+a > i {
+    color: black;
+    justify-content: center;
+}
+
+main{
+    background-color: white;
+}
+
+.partie_principale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+
+}
+
+
+/* Modifiez la classe de votre tableau pour limiter la hauteur maximale */
+.table-scrollable {
+    max-height: 80vh; /* Ajustez cette valeur selon vos besoins */
+    overflow-y: auto; /* Ajout de l'overflow:auto pour permettre le défilement vertical si nécessaire */
+  }
+  
+  /* Réglez le style de débordement pour les cellules de tableau si nécessaire */
+  .table-scrollable td,
+  .table-scrollable th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bienvenue{
+    font-size: 6vh;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25%;
+    font-style: italic;
+}
